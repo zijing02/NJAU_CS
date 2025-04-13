@@ -1,0 +1,110 @@
+IOY0 EQU 0C000H               ;8255的CS引脚连接IOY0对应的端口始地址 
+MY8255_A EQU IOY0+00H*2 ;          ;8255的端口A地址 
+MY8255_B EQU IOY0+01H*2           ;8255的端口B地址 
+MY8255_C EQU IOY0+02H*2           ;8255的端口C地址 
+MY8255_MODE EQU IOY0+03H*2      ;8255的控制寄存器地址 
+CODE SEGMENT                     ;定义代码段 
+    ASSUME CS:CODE 
+START: MOV DX,MY8255_MODE       ;8255控制端口地址为3006H 
+    MOV AL,82H  ;设置8255方式控制字,A、B口工作方式0，A口输出,B口输入 
+    OUT DX,AL 
+LOOP1: MOV DX,MY8255_B            ;读B口发出的起始数据，B口输入 
+    IN AL,DX 
+    MOV DX,MY8255_A               ;写A口发出的起始数据，A口输出 
+    OUT DX,AL 
+    MOV AH,1                        ;判断是否有按键按下 
+    INT 16H 
+    JZ LOOP1                        ;无按键则跳回继续循环，有则退出 
+QUIT: MOV AX,4C00H                 ;结束程序退出 
+    INT 21H 
+CODE ENDS 
+    END START 
+    
+ 
+  IOY0 EQU 0C000H               ;8255的CS引脚连接IOY0对应的端口始地址 
+MY8255_A EQU IOY0+00H*2        ;8255的端口A地址 
+MY8255_B EQU IOY0+01H*2        ;8255的端口B地址 
+MY8255_C EQU IOY0+02H*2        ;8255的端口C地址 
+MY8255_MODE EQU IOY0+03H*2   ;8255的控制寄存器地址 
+STACK1 SEGMENT STACK         ;定义堆栈段 
+    DW 256 DUP(?) 
+STACK1 ENDS 
+DATA SEGMENT                   ;定义数据段 LA DB ? 
+LB DB ? 
+DATA ENDS 
+CODE SEGMENT                  ;定义代码段 
+    ASSUME CS:CODE,DS:DATA 
+START: MOV AX,DATA 
+    MOV DS,AX 
+    MOV DX,MY8255_MODE       ;8255控制端口地址为3006H 
+    MOV AL,80H    ;设置8255方式控制字,A、B口工作方式0，A、B口输出 
+    OUT DX,AL 
+    MOV DX,MY8255_A           ;写A口发出的起始数据 
+    MOV AL,80H 
+    OUT DX,AL                   ;点亮数据灯D7 
+    MOV LA,AL 
+    MOV DX,MY8255_B           ;写B口发出的起始数据 
+    MOV AL,01H 
+    OUT DX,AL                   ;点亮数据灯D8 
+    MOV LB,AL 
+LOOP1: CALL DALLY 
+    MOV AL,LA                  ;将A口起始数据右移再写入A口 
+    ROR AL,1 
+    MOV LA,AL 
+    MOV DX,MY8255_A 
+    OUT DX,AL 
+    MOV AL,LB                  ;将B口起始数据左移再写入B口 
+    ROL AL,1 
+    MOV LB,AL 
+    MOV DX,MY8255_B 
+    OUT DX,AL 
+    MOV AH,1                    ;判断是否有按键按下 
+    INT 16H 
+    JZ LOOP1                    ;无按键则跳回继续循环，有则退出 
+DALLY PROC NEAR               ;软件延时子程序 
+    PUSH CX 
+    PUSH AX 
+    MOV CX,0FFFH 
+D1: MOV AX,0FFFFH 
+D2: DEC AX 
+    JNZ D2 
+    LOOP D1 
+    POP AX 
+    POP CX 
+    RET 
+DALLY ENDP 
+CODE ENDS 
+    END START 
+    
+
+ IOY0 EQU 0C000H              ;8255的CS引脚连接IOY0对应的端口始地址 
+MY8255_A EQU IOY0+00H*2        ;8255的端口A地址 
+MY8255_B EQU IOY0+01H*2        ;8255的端口B地址 
+MY8255_C EQU IOY0+02H*2        ;8255的端口C地址 
+MY8255_MODE EQU IOY0+03H*2   ;8255的控制寄存器地址 
+DATA SEGMENT                  ;定义LED段码表 
+TAB_LED DB 3FH,06H,5BH,4FH,66H,6DH,7DH,07H DB 7FH,6FH,77H,7CH,39H,5EH,79H,71H 
+DATA ENDS 
+CODE SEGMENT 
+ASSUME DS:DATA, CS:CODE 
+START: MOV AX,DATA 
+MOV DS,AX 
+MOV AL,82H          ;1000 0010  A端口方式0输出，B方式0输入 
+MOV DX,MY8255_MODE 
+OUT DX,AL 
+LOOP1: MOV DX,MY8255_B 
+IN AL,DX                        ;读入开关状态 
+AND AL,0FH                     ;屏蔽高四位 
+MOV BX,OFFSET TAB_LED       ;取LED段码表首地址 
+XLAT                           ;查出AL对应的LED段控制码 
+MOV DX,MY8255_A              ;8255的A端口是LED段码输出口 
+OUT DX,AL                     ;输出段控制信号 
+CALL DALLY 
+JZ LOOP1 
+DALLY PROC NEAR                    ;软件延时子程序   MOV CX,0070H 
+D1: MOV AX,000FH 
+D2: DEC AX   JNZ D2 
+  LOOP D1 
+  RET 
+DALLY ENDP 
+CODE ENDS   END START 

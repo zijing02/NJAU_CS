@@ -1,0 +1,122 @@
+data    segment
+tab1    DB  'F', 'E', 'D', 'C'
+tab2    DB  'B', 'A', '9', '8'
+tab3    DB  '7', '6', '5', '4'
+tab4    DB  '3', '2', '1', '0'
+ 
+kb    DB  00eh, 00dh,00bh,007h
+ 
+port      equ     288h
+data    ends
+stack   segment
+sta     db 256 dup(?)
+top        equ size sta
+stack   ends
+code    segment
+    assume cs:code,ds:data,ss:stack
+main    proc far
+        mov ax,data
+        mov ds,ax
+      mov ax, stack
+        mov ss,ax
+      mov sp,top
+;初始化8255
+        mov dx, port+3
+        mov al,10000010b  
+            out dx,al    
+                   
+      
+ begin:   
+        mov al,0
+        mov dx, port        
+        out dx,al
+        mov dx, port+1
+        in al,dx
+            and al,0fh        
+            cmp al,0fh  
+            je  begin
+;若有键按下，按列查找哪个键
+ 
+mov al,00001110b
+        mov dx, port         
+        out dx,al
+        mov dx, port+1
+        in al,dx                 
+            lea bx,tab1              
+        cmp al,0fh              
+        jne  display
+ 
+        mov al,00001101b
+        mov dx, port         
+        out dx,al
+        mov dx, port+1
+        in al,dx                
+            lea bx,tab2              
+        cmp al,0fh              
+        jne  display
+ 
+        mov al,00001011b
+        mov dx, port         
+        out dx,al
+        mov dx, port+1
+        in al,dx                  
+            lea bx,tab3              
+            cmp al,0fh 
+        jne  display
+ 
+            mov al,00000111b
+        mov dx, port          
+        out dx,al
+        mov dx, port+1
+        in al,dx                
+            lea bx,tab4             
+             cmp al,0fh             
+        jne  display
+ 
+nop
+jmp    begin
+ 
+;查找按下的键，并显示
+display:
+        mov di,bx
+        lea si,kb    ;存小键盘扫描码
+ 
+next:    cmp al,[si]  ;查键盘扫描码表
+        je show    ;找到了,转去显示
+        inc si      ;否则继续
+        inc di
+        jmp next
+show:               ;显示键入字符  
+    mov ah,2
+    mov dl,[di]
+    int 21h
+;    cmp dl, 'F'   ;若是'P'则退出
+;      je over
+    call delay
+    jmp    begin    ;重新开始查询
+ 
+ 
+over:
+    mov ah,4ch
+        int 21h
+main  endp
+ 
+delay  proc near       ;延时循环 100*65536次  
+      push di
+      push cx
+      mov cx,36h
+      mov di,0 
+again:
+      nop
+      dec di
+      jnz again
+      dec cx
+      jnz again
+ 
+      pop cx
+      pop di
+      ret
+delay endp
+ 
+code    ends
+end main

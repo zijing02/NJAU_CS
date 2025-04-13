@@ -1,0 +1,78 @@
+DATAS SEGMENT
+    ;此处输入数据段代码
+    NUM db 10 DUP(0)
+DATAS ENDS
+ 
+STACKS SEGMENT
+    ;此处输入堆栈段代码
+STACKS ENDS
+ 
+CODES SEGMENT
+    ASSUME CS:CODES,DS:DATAS,SS:STACKS
+START:
+   MOV AX,DATAS
+    MOV DS,AX
+    mov cl,10
+    mov bx,0
+    mov si,0
+    
+L1: mov bx,0
+	call input
+    mov NUM[si],bx
+    add si,2
+    cmp si,20
+    jb L1
+    mov si,0
+    
+L2: mov ax,NUM[si]
+    call output
+    mov dl,','
+    mov ah,2
+    int 21h
+    add si,2
+    cmp si,20
+    jb L2
+    MOV AH,4CH
+    INT 21H
+input proc;输入函数
+L0: mov ah,1
+    int 21h
+    cmp al,'0'
+    jb over
+    cmp al,'9'
+    ja over
+    sub al,48
+    mov dl,al;暂存输入的数
+    mov ax,bx;将bx存到ax中，做乘法
+    mul cl
+    mov dh,0
+    add ax,dx;将dl里的数加到ax中
+    mov bx,ax
+    jmp L0
+over:
+ret
+input endp
+ 
+output proc;输出函数
+    mov bl,0
+    mov ax,NUM[si]
+L3: div cl
+    push ax;入栈
+    add bl,1;计数器加一
+    mov ah,0
+    cmp ax,0;当被除数为0时结束循环
+    jne L3
+L4: pop dx;出栈
+    sub bl,1;计数器减一
+    mov dl,dh
+    add dl,48
+    mov ah,2
+    int 21h
+    cmp bl,0;当计数器清零时结束循环
+    jne L4
+ret
+output endp 
+    CODES ENDS
+END START
+ 
+ 
