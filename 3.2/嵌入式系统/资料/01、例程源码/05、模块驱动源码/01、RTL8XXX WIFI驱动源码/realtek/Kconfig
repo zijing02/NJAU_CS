@@ -1,0 +1,23 @@
+menuconfig REALTEK_WIFI
+	tristate "Realtek wifi"	
+
+if REALTEK_WIFI
+
+choice 
+	prompt "select wifi type"
+	default RTL8189FS
+
+config RTL8189FS
+	depends on REALTEK_WIFI
+	tristate "rtl8189fs/ftv sdio wifi"
+
+config RTL8188EUS
+	depends on REALTEK_WIFI
+	tristate "rtl8188eus usb wifi"	
+
+config RTL8192CU
+	depends on REALTEK_WIFI
+	tristate "Realtek 8192C USB WiFi"
+
+endchoice 
+endif

@@ -1,0 +1,82 @@
+QWidget#smarthome {
+background:#1f1f20;
+}
+
+QPushButton#cloudPushButton {
+color: white;
+font-size: 18px;
+text-align:left;
+background:transparent;
+background:#3c3c3c;
+border-radius:20px;
+}
+
+QWidget#widget3 {
+background:#3c3c3c;
+border-radius:20px;
+}
+
+QWidget#widget5 {
+background:transparent;
+border-radius:10px;
+}
+
+QWidget#widget8,#widget9,#widget10 {
+background:#3c3c3c;
+border-radius:15px;
+}
+
+QLabel#label0 {
+color: white;
+font-size: 25px;
+}
+
+QLabel#label1 {
+color: #88eeeeee;
+font-size: 15px;
+}
+
+QLabel#label2,#label3 {
+color: white;
+font-size: 20px;
+}
+
+QPushButton {
+color: white;
+font-size: 15px;
+background:#1f1f20;
+border-radius:5px;
+}
+
+QPushButton:checked {
+background:#f39800;
+}
+
+QListWidget {
+border:none;
+background:transparent;
+}
+
+QListWidget::item {
+width: 150;
+height: 150;
+margin-right:30;
+}
+
+QListWidget::item:active {
+background: transparent;
+}
+
+QListWidget::item:selected {
+background:transparent;
+}
+
+QLabel#itemLable3,#itemLable4,#itemLable5 {
+color: white;
+font-size: 18px;
+}
+
+QLabel#itemLable6,#itemLable7,#itemLable8 {
+color:#88ffffff;
+font-size: 14px;
+}

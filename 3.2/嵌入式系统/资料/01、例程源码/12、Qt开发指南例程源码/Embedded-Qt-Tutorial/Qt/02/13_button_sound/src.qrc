@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>audio/bell.wav</file>
+    </qresource>
+</RCC>

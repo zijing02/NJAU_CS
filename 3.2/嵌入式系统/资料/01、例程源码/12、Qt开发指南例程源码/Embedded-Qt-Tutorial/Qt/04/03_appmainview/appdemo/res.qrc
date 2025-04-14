@@ -1,0 +1,41 @@
+<RCC>
+    <qresource prefix="/">
+        <file>icons/categories1.png</file>
+        <file>icons/categories2.png</file>
+        <file>icons/man1.png</file>
+        <file>icons/man2.png</file>
+        <file>icons/nameofsong1.png</file>
+        <file>icons/nameofsong2.png</file>
+        <file>icons/new1.png</file>
+        <file>icons/new2.png</file>
+        <file>icons/star1.png</file>
+        <file>icons/star2.png</file>
+        <file>icons/women1.png</file>
+        <file>icons/women2.png</file>
+        <file>style.qss</file>
+        <file>icons/ktv-logo1.png</file>
+        <file>icons/ktv-logo2.png</file>
+        <file>icons/selectsongs1.png</file>
+        <file>icons/selectsongs2.png</file>
+        <file>icons/interation1.png</file>
+        <file>icons/interation2.png</file>
+        <file>icons/more1.png</file>
+        <file>icons/more2.png</file>
+        <file>icons/search1.png</file>
+        <file>icons/search2.png</file>
+        <file>icons/serivce1.png</file>
+        <file>icons/serivce2.png</file>
+        <file>icons/score1.png</file>
+        <file>icons/score2.png</file>
+        <file>icons/volume1.png</file>
+        <file>icons/volume2.png</file>
+        <file>icons/play1.png</file>
+        <file>icons/play2.png</file>
+        <file>icons/original1.png</file>
+        <file>icons/original2.png</file>
+        <file>icons/next1.png</file>
+        <file>icons/next2.png</file>
+        <file>icons/list1.png</file>
+        <file>icons/list2.png</file>
+    </qresource>
+</RCC>

@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>icons/addalarm1.png</file>
+        <file>style.qss</file>
+        <file>icons/addalarm2.png</file>
+    </qresource>
+</RCC>

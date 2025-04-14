@@ -1,0 +1,90 @@
+QTabBar:tab {
+height:0; width:0;
+}
+
+QWidget {
+background:#e6e6e6;
+}
+
+QListWidget {
+border:none;
+}
+
+QPushButton#recorderBt {
+border-image:url(:/icons/recorder_stop1.png);
+background:transparent;
+}
+
+QPushButton#recorderBt:hover {
+border-image:url(:/icons/recorder_stop2.png);
+}
+
+QPushButton#recorderBt:checked {
+border-image:url(:/icons/recorder_start1.png);
+}
+
+QPushButton#recorderBt:checked:hover {
+border-image:url(:/icons/recorder_start2.png);
+}
+
+QListWidget {
+color:black;
+font-size: 20px;
+border:none;
+icon-size:40px;
+}
+
+QListWidget:item:active {
+background: transparent;
+}
+
+QListWidget:item {
+background: transparent;
+height:60;
+}
+
+QListWidget:item:selected {
+color:red;
+background: transparent;
+}
+
+QListWidget:item:hover {
+background: transparent;
+color:red;
+border:none;
+}
+
+QPushButton#nextBt {
+border-image:url(:/icons/btn_next1.png);
+}
+
+QPushButton#nextBt:hover {
+border-image:url(:/icons/btn_next2.png);
+}
+
+QPushButton#previousBt {
+border-image:url(:/icons/btn_previous1.png);
+}
+
+QPushButton#previousBt:hover {
+border-image:url(:/icons/btn_previous2.png);
+}
+
+QPushButton#removeBt {
+border-image:url(:/icons/remove1.png);
+}
+
+QPushButton#removeBt:hover {
+border-image:url(:/icons/remove2.png);
+}
+
+QProgressBar::chunk {
+background-color: #f6f6f6;
+height: 8px;
+margin: 0.5px;
+border-radius:0px;
+}
+
+QProgressBar {
+color:transparent;
+}

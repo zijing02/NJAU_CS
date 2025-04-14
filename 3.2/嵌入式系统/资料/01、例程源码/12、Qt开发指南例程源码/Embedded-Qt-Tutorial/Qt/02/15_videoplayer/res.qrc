@@ -1,0 +1,24 @@
+<RCC>
+    <qresource prefix="/">
+        <file>style.qss</file>
+        <file>icons/btn_play1.png</file>
+        <file>icons/btn_play2.png</file>
+        <file>icons/btn_next1.png</file>
+        <file>icons/btn_next2.png</file>
+        <file>icons/btn_pause1.png</file>
+        <file>icons/btn_pause2.png</file>
+        <file>icons/btn_volumeup1.png</file>
+        <file>icons/btn_volumeup2.png</file>
+        <file>icons/btn_volumedown1.png</file>
+        <file>icons/btn_volumedown2.png</file>
+        <file>icons/handle.png</file>
+        <file>icons/btn_fullscreen1.png</file>
+        <file>icons/btn_fullscreen2.png</file>
+        <file>icons/btn_screen1.png</file>
+        <file>icons/btn_screen2.png</file>
+        <file>images/bg.png</file>
+        <file>images/mask.png</file>
+        <file>images/add_page.png</file>
+    </qresource>
+    <qresource prefix="/images"/>
+</RCC>

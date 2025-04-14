@@ -1,0 +1,4 @@
+board/freescale/mx6ull_alientek_nand/mx6ull_alientek_nand.c文件下的setup_iomux_fec函数缺少延时，应添加mdelay(150);
+
+2023.10.8
+修复NAND开发板保存的uboot环境变量会清空的问题

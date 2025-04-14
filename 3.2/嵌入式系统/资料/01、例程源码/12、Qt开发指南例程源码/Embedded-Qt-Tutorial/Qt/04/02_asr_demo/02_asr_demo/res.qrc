@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>gif/voice_effect.gif</file>
+        <file>audio/sound.wav</file>
+    </qresource>
+</RCC>

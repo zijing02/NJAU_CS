@@ -1,0 +1,17 @@
+<RCC>
+    <qresource prefix="/">
+        <file>style.qss</file>
+        <file>icons/recorder_stop2.png</file>
+        <file>icons/recorder_start1.png</file>
+        <file>icons/recorder_stop1.png</file>
+        <file>icons/recorder_start2.png</file>
+        <file>icons/pause.png</file>
+        <file>icons/play.png</file>
+        <file>icons/btn_next1.png</file>
+        <file>icons/btn_next2.png</file>
+        <file>icons/btn_previous1.png</file>
+        <file>icons/btn_previous2.png</file>
+        <file>icons/remove1.png</file>
+        <file>icons/remove2.png</file>
+    </qresource>
+</RCC>

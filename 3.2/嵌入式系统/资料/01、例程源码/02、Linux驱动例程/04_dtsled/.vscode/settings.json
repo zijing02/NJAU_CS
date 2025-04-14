@@ -1,0 +1,21 @@
+{
+    "search.exclude": {
+        "**/node_modules": true,
+        "**/bower_components": true,
+        "**/*.o":true,
+        "**/*.su":true, 
+        "**/*.cmd":true,
+        "Documentation":true,      
+    },
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,  
+        "**/*.o":true,
+        "**/*.su":true, 
+        "**/*.cmd":true,
+        "Documentation":true, 
+    }
+}

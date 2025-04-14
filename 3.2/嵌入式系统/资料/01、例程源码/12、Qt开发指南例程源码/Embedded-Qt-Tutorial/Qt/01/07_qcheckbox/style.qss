@@ -1,0 +1,17 @@
+QCheckBox{
+        spacing: 5px;
+        color: white;
+}
+QCheckBox::indicator {
+        width: 50px;
+        height: 50px;
+}
+QCheckBox::indicator:enabled:unchecked {
+        image: url(:/images/unchecked.png);
+}
+QCheckBox::indicator:enabled:checked {
+        image: url(:/images/checked.png);
+}
+QCheckBox::indicator:enabled:indeterminate {
+        image: url(:/images/indeterminate.png);
+}

@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/dataviewicon.png</file>
+    </qresource>
+</RCC>

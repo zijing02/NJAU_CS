@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"bsp_clk.h": "c",
+			"imx6ul.h": "c",
+			"core_ca7.h": "c"
+		}
+	}
+}

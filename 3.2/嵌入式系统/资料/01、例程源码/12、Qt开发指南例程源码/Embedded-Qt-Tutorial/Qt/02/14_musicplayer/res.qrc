@@ -1,0 +1,25 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/cd.png</file>
+        <file>style.qss</file>
+        <file>images/btn_play1.png</file>
+        <file>images/btn_play2.png</file>
+        <file>images/btn_pause1.png</file>
+        <file>images/btn_pause2.png</file>
+        <file>images/btn_previous1.png</file>
+        <file>images/btn_previous2.png</file>
+        <file>images/btn_next1.png</file>
+        <file>images/btn_next2.png</file>
+        <file>images/btn_favorite_no.png</file>
+        <file>images/btn_favorite_yes.png</file>
+        <file>images/btn_listcircle1.png</file>
+        <file>images/btn_menu1.png</file>
+        <file>images/btn_menu2.png</file>
+        <file>images/btn_volume2.png</file>
+        <file>images/btn_volume1.png</file>
+        <file>images/btn_listcircle2.png</file>
+        <file>images/handle.png</file>
+        <file>images/sub-page.png</file>
+        <file>images/mask.png</file>
+    </qresource>
+</RCC>

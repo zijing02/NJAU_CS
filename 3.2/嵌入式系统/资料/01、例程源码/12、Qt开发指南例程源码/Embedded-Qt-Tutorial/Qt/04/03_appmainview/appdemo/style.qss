@@ -1,0 +1,234 @@
+QPushButton#mid_pushButton0 {
+background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+stop: 0 #50453c, stop: 1 #4f423e);
+border-image:url(:/icons/women1.png);
+}
+
+QPushButton#mid_pushButton0:hover {
+border-image:url(:/icons/women2.png);
+}
+
+QPushButton#mid_pushButton1 {
+background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+stop: 0 #50453c, stop: 1 #4f423e);
+border-image:url(:/icons/nameofsong1.png);
+text-align: bottom;
+border: 15px;
+color: #aaaaaa;
+font-size: 15px;
+}
+
+QPushButton#mid_pushButton1:hover {
+border-image:url(:/icons/nameofsong2.png);
+color:white;
+}
+
+QPushButton#mid_pushButton2 {
+background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+stop: 0 #50453c, stop: 1 #4f423e);
+border-image:url(:/icons/categories1.png);
+text-align: bottom;
+border: 15px;
+color: #aaaaaa;
+font-size: 15px;
+}
+
+QPushButton#mid_pushButton2:hover {
+border-image:url(:/icons/categories2.png);
+color:white;
+}
+
+
+QPushButton#mid_pushButton3 {
+background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+stop: 0 #50453c, stop: 1 #4f423e);
+border-image:url(:/icons/star1.png);
+text-align: bottom;
+border: 15px;
+color: #aaaaaa;
+font-size: 15px;
+}
+
+QPushButton#mid_pushButton3:hover {
+border-image:url(:/icons/star2.png);
+color:white;
+}
+
+QPushButton#mid_pushButton4 {
+background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+stop: 0 #50453c, stop: 1 #4f423e);
+border-image:url(:/icons/new1.png);
+text-align: bottom;
+border: 15px;
+color: #aaaaaa;
+font-size: 15px;
+}
+
+QPushButton#mid_pushButton4:hover {
+border-image:url(:/icons/new2.png);
+color:white;
+}
+
+QPushButton#mid_pushButton5 {
+background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+stop: 0 #50453c, stop: 1 #4f423e);
+border-image:url(:/icons/man1.png);
+text-align: bottom;
+border: 15px;
+color: #aaaaaa;
+font-size: 15px;
+}
+
+QPushButton#mid_pushButton5:hover {
+border-image:url(:/icons/man2.png);
+color:white;
+}
+
+QPushButton#top_pushButton0 {
+border-image:url(:/icons/ktv-logo1.png);
+}
+
+QPushButton#top_pushButton0:hover {
+border-image:url(:/icons/ktv-logo2.png);
+}
+
+QPushButton#top_pushButton1 {
+border-image:url(:/icons/selectsongs1.png);
+text-align: right;
+color: #aaaaaa;
+font-size: 15px;
+font-weight: bold;
+}
+
+QPushButton#top_pushButton1:hover {
+border-image:url(:/icons/selectsongs2.png);
+color: white;
+}
+
+QPushButton#top_pushButton2 {
+border-image:url(:/icons/interation1.png);
+text-align: right;
+color: #aaaaaa;
+border: 20px;
+font-size: 15px;
+font-weight: bold;
+}
+
+QPushButton#top_pushButton2:hover {
+border-image:url(:/icons/interation2.png);
+color: white;
+}
+
+QPushButton#top_pushButton3 {
+border-image:url(:/icons/more1.png);
+text-align: right;
+color: #aaaaaa;
+border:20px;
+font-size: 15px;
+font-weight: bold;
+}
+
+QPushButton#top_pushButton3:hover {
+border-image:url(:/icons/more2.png);
+color: white;
+}
+
+QPushButton#top_pushButton4 {
+border-image:url(:/icons/search1.png);
+text-align: right;
+color: #aaaaaa;
+border:20px;
+font-size: 15px;
+font-weight: bold;
+}
+
+QPushButton#top_pushButton4:hover {
+border-image:url(:/icons/search2.png);
+color: white;
+}
+
+QPushButton#bottom_pushButton0 {
+border-image:url(:/icons/serivce1.png);
+text-align: bottom;
+color: #aaaaaa;
+font-size: 12px;
+font-weight: bold;
+}
+
+QPushButton#bottom_pushButton0:hover {
+border-image:url(:/icons/serivce2.png);
+color: white;
+}
+
+QPushButton#bottom_pushButton1 {
+border-image:url(:/icons/score1.png);
+text-align: bottom;
+color: #aaaaaa;
+font-size: 12px;
+font-weight: bold;
+}
+
+QPushButton#bottom_pushButton1:hover {
+border-image:url(:/icons/score2.png);
+color: white;
+}
+
+QPushButton#bottom_pushButton2 {
+border-image:url(:/icons/volume1.png);
+text-align: bottom;
+color: #aaaaaa;
+font-size: 12px;
+font-weight: bold;
+}
+
+QPushButton#bottom_pushButton2:hover {
+border-image:url(:/icons/volume2.png);
+color: white;
+}
+
+QPushButton#bottom_pushButton3 {
+border-image:url(:/icons/play1.png);
+}
+
+QPushButton#bottom_pushButton3:hover {
+border-image:url(:/icons/play2.png);
+}
+
+QPushButton#bottom_pushButton4 {
+border-image:url(:/icons/original1.png);
+text-align: bottom;
+color: #aaaaaa;
+font-size: 12px;
+font-weight: bold;
+}
+
+QPushButton#bottom_pushButton4:hover {
+border-image:url(:/icons/original2.png);
+color: white;
+}
+
+QPushButton#bottom_pushButton5 {
+border-image:url(:/icons/next1.png);
+text-align: bottom;
+color: #aaaaaa;
+font-size: 12px;
+font-weight: bold;
+}
+
+QPushButton#bottom_pushButton5:hover {
+border-image:url(:/icons/next2.png);
+color: white;
+}
+
+QPushButton#bottom_pushButton6 {
+border-image:url(:/icons/list1.png);
+text-align: bottom;
+color: #aaaaaa;
+font-size: 12px;
+font-weight: bold;
+}
+
+QPushButton#bottom_pushButton6:hover {
+border-image:url(:/icons/list2.png);
+color: white;
+}
