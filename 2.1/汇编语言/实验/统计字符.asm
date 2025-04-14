@@ -3,7 +3,7 @@
 ;0->48(30H),9->57(39H),A->65(41H),Z->90(5aH),a->97(61H),z->122(7aH)
 ;只需要统计字符和数字的数量即可，其他字符的数量用总数减去
 data segment
-    buf db 10,'1',3 dup(0)        ;预定义字符串
+    buf db 10,'1qq123',3 dup(0)        ;预定义字符串
 data ends
 code segment
     assume ds:data,cs:code 
