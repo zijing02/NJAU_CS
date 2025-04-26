@@ -1,0 +1,55 @@
+JDK：
+
+JDK 是 Java 开发工具包，用于开发 Java 应用程序。
+包含 JRE 以及编译、调试、和监控工具，比如 javac（Java 编译器）和 jdb（Java 调试器）。
+适用于 开发者：创建、测试和打包 Java 应用。
+JRE：
+
+JRE 是 Java 运行时环境，用于运行已开发好的 Java 程序。
+包含 Java 虚拟机（JVM）、核心库（如 java.base）、类加载器等基础运行时组件。
+适用于 用户：只需运行 Java 应用，而不需要开发工具。
+
+通过 IntelliJ IDEA 使用 Artifacts 打包成 可执行 JAR 文件 时，JAR 包中已经包含了你项目所需的所有依赖库，但不会包含 JDK 或 JRE。这意味着你打包出来的 JAR 文件可以在任何支持 Java 运行时环境（JRE）的机器上运行，但前提是该机器必须安装了 JRE。
+使用 IntelliJ IDEA 的 Artifacts 打包功能时生成的 JAR 包本身不会捆绑 JRE。用户的系统仍然需要安装 JRE 来运行该 JAR。如果你希望用户无需安装 JRE，可以考虑捆绑 JRE、使用 jlink、或者使用 exe4j 等工具将 JAR 打包为可执行文件并捆绑 JRE。
+
+我们要做的是查看自己项目的jre依赖并且利用jdeps和jlink生成最小的jre，
+然后使用exe4j打包，这样可以极大缩小我们使用的exe捆绑的jdk或者jre
+
+1.查看自己项目的Java依赖  jar   9版本支持
+
+jdeps --list-deps jar包地址
+
+我的是
+D:\大学课程\操作系统复习\操作系统课设\杨鹏19220222-课程设计-A+\out\artifacts\19220222__A__jar\杨鹏19220222-课程设计-A+.jar
+
+
+2.生成一个自定义的jre包
+
+jlink --module-path ${JAVA_HOME}/jmods `
+      --add-modules java.base,java.sql `
+      --output /path/to/custom-jre `
+      --compress=2 --strip-debug --no-header-files --no-man-pages
+
+--module-path：指定模块路径，一般为 JDK 安装目录下的 jmods 文件夹。就是系统环境变量的配置
+--add-modules：列出你的项目需要的模块（根据 jdeps 的输出）。
+--output：指定生成的自定义 JRE 的输出目录。
+--compress=2：启用最高级别的压缩。
+--strip-debug：移除调试信息，减小体积。
+--no-header-files 和 --no-man-pages：删除头文件和手册页
+
+我的--add-modules：
+   java.base
+   java.desktop
+   java.logging
+我的--output：
+D:\大学课程\操作系统复习\操作系统课设\杨鹏19220222-课程设计-A+
+
+所以我的生成命令是
+
+jlink --module-path ${JAVA_HOME}/jmods `
+      --add-modules java.base,java.desktop,java.logging `
+      --output "D:\大学课程\操作系统复习\操作系统课设\杨鹏19220222-课程设计-A+\jre" `
+      --compress=2 --strip-debug --no-header-files --no-man-pages
+
+
+

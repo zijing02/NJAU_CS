@@ -1,0 +1,9 @@
+jdeps --list-deps jar包地址
+
+jlink --module-path ${JAVA_HOME}/jmods `
+      --add-modules java.base,java.desktop,java.logging `
+      --output "\jre" `
+      --compress=2 --strip-debug --no-header-files --no-man-pages
+
+
+
