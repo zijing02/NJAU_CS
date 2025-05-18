@@ -1,0 +1,23 @@
+使用方法：
+1.uboot-imx-2016.03-2.1.0-gxxxxxx-vx.x目录下是uboot镜像，可用于替换光盘路径下5、开发工具\4、正点原子修改过的MFG_TOOL烧写工具\mfgtool\Profiles\Linux\OS Firmware\files\boot\下的uboot镜像文件。
+
+
+
+【版本v1.0 g9bd38ef】
+无
+【版本v1.1 gd9420c3】
+1.添加ddr校准参数。
+【版本v1.2 g4e04879】 2020.01.15
+1.去除uboot的logo，在include/configs/mx6ullevk.h头文件下注释define CONFIG_VIDEO_LOGO。因为uboot下显示logo颜色不理想。
+2.添加以支持识别rgb转vga模块和rgb转hdmi模块的设备树代码。
+【版本v1.3 g4475ea1】 2020.04.29
+1.添加驱动教程里的编译配置文件，同时支持驱动教程的编译方法
+【版本v1.4 gd3f0479】 2020.08.07
+1.修复uboot读取CPU主频的错误，感谢正点原子论坛坛友提供的方法，虽然不影响使用，在此也是加上相应的代码，修改的文件为uboot源码arch/arm/cpu/armv7/mx6/soc.c文件。
+2.修改板卡名字为I.MX6U ALPHA|MINI。
+【版本v1.5 ge468cdc】2021.03.29
+1.关闭Uboot中的LCD背光，将其拉低防止4.3寸800x480的屏开机屏幕突然变白闪屏，修改的文件为board/freescale/mx6ullevk/mx6ullevk.c。
+【版本v1.6 gee88051】2021.11.05
+1.禁用uboot lcd。
+【版本v1.7 g0ae7e33】2022.08.15
+1.兼容sr8021f phy。

@@ -1,0 +1,67 @@
+主链接：
+http://47.111.11.73/docs/boards/arm-linux/zdyz-i.mx6ull.html
+
+bilibili链接：
+https://space.bilibili.com/394620890/lists
+
+开发板编码：
+（1） USB OTG烧写设置：0100 0000（2覆写出场系统）       （2） SD 卡启动设置：1000 0010 （17）
+（3） EMMC 启动设置：1010 0110（1367）                 （4） NAND FLASH启动设置：1000 1001（用不上）
+
+连接前务必关闭windows以及ubuntu防火墙，对不同开发板，需要使用不同版本的uboot，具体自己挨个烧录试
+
+常用命令
+make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- distclean 
+make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- mx6ull_14x14_ddr512_emmc_defconfig 
+make V=1 ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- -j12 
+./mx6ull_alientek_emmc.sh
+./imxdownload u-boot.bin /dev/sdb
+
+sudo apt-get install tftp-hpa tftpd-hpa 
+sudo vi /etc/default/tftpd-hpa 
+sudo vi /etc/xinetd.d/tftp 
+sudo service tftpd-hpa restart 
+sudo service xinetd restart 
+
+sudo vi /etc/exports 
+sudo service nfs-kernel-server restart 
+showmount -e 
+
+ifconfig eth0 up 
+ifconfig eth0 192.168.10.50 
+
+env default -a;saveenv 
+setenv ipaddr 192.168.10.50 
+setenv ethaddr 00:04:9f:04:d2:35 
+setenv gatewayip 192.168.10.1 
+setenv netmask 255.255.255.0 
+setenv serverip 192.168.10.100 
+saveenv 
+
+ping 192.168.10.100
+
+ifconfig eth0 192.168.10.50 
+tftp -g -r test.c 192.168.10.100 
+cat test.c 
+
+mkdir get 
+mount -t nfs -o nolock,nfsvers=3 192.168.10.100:/home/alientek/linux/nfs get/ 
+
+setenv bootcmd 'tftp 80800000 zImage;tftp 83000000 imx6ull-alientek-emmc.dtb;bootz 80800000 - 83000000' 
+saveenv
+tftp 80800000 zImage 
+tftp 83000000 imx6ull-alientek-emmc.dtb 
+bootz 80800000 - 83000000 
+
+setenv bootargs 'console=ttymxc0,115200 root=/dev/nfs \ 
+nfsroot=192.168.10.100:/home/alientek/linux/nfs/rootfs,proto=tcp rw \ 
+ip=192.168.10.50:192.168.10.100:192.168.10.1:255.255.255.0::eth0:off'
+saveenv 
+boot 
+
+
+
+tftp 80800000 zImage;tftp 83000000 imx6ull-alientek-emmc.dtb;bootz 80800000 - 83000000./imxdownload u-boot.bin /dev/sdb
+
+console=ttymxc0,115200 rw root=/dev/nfs nfsroot=192.168.1.66:/home/zzk/linux/nfs/rootfs ip=192.168.1.50:192.168.1.66:192.168.1.1:255.255.255.0::eth0:of
+

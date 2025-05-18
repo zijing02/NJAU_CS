@@ -1,0 +1,32 @@
+﻿发布日期：2021年8月13日
+
+注意：rpm安装包使用前提，请使用最新出厂系统，避免用户的系统过旧！
+
+rpm包简介：rpm包在红帽系统常见，deb在Ubuntu系统常见。简而言之，就是用于安装软件包的。
+
+需求前提：
+由于正点原子定制的yocto文件系统发行版本是没有服务器提供软件包下载的。
+通常产品也不会从服务器去下载软件，出厂系统一般提前做好，好比如正点原子出厂文件系统的功能就已经非常齐全。但是可能用户又有一些其他软件需求，不得不通过
+我们提供的rpm安装包来安装。正点原子出厂系统功能特别非富，非富的同时，占用Flash空间就会越来越大，也有可能其他用户不需要这种包，所以出厂系统是默认不安装上去的。
+比如用户需要Qt支持Mysql，那么需要我们的板子装Mysql，才能使用。或者需要用Qt Web浏览器，那么需要我们装Qt的Web浏览器库才能使用。
+
+
+rpm包提供的内容简介：
+1、libmysqld18-5.5.46-r0.cortexa7hf_neon.rpm // 数据库指令工具
+2、mariadb-client-5.5.46-r0.cortexa7hf_neon.rpm // 数据库客户端
+3、mariadb-server-5.5.46-r0.cortexa7hf_neon.rpm // 数据库服务端
+4、mariadb-setupdb-5.5.46-r0.cortexa7hf_neon.rpm // 服务启动脚本
+5、qtwebkit-5.12.9+git0+beaeeb9988-r0.cortexa7hf_neon.rpm // QtWebkit浏览器内核Qt库（注此库在Qt5.6版本以后被Qt官方用QWebengine取代）
+
+使用说明：
+（1）Qt支持Mysql，那么我们需要将上面1~4的库，全部安装。
+（2）如果需要Qt支持Webkit浏览器，那么我们就安装5。
+
+安装指令示例：
+将需要安装的包拷贝到开发板出厂系统路径（只适合出厂文件系统）下，执行下面的指令安装。
+强制安装
+rpm -i --nodeps --force libmysqld18-5.5.46-r0.cortexa7hf_neon.rpm
+查看安装的内容
+rpm -ql libmysqld18
+卸载
+rpm -e libmysqld18

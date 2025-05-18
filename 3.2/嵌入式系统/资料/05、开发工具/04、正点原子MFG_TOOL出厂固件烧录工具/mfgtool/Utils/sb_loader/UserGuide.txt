@@ -1,0 +1,29 @@
+The tool is used to download an image to target platform to run. At presetn, the tool supports mx23/28/508 platforms.
+Please run the tool in a command line environment:
+1. Open a command window
+2. Enter the dir in which sb_loader.exe locates
+3. Copy your image to the same dir
+
+For mx28, the command is like this: 
+sb_loader -f xxx.sb
+
+For mx23, the command is like this: 
+sb_loader -f xxx.sb
+
+For mx508, the command is more complicated: 
+If only one image needs to be downloaded, then just use below command:
+sb_loader -f xxx.xxx
+
+If you need to download multiple images and run them, then a bunch of commands must be executed one by one to finish the whole work, Let's give an example to explain this:
+sb_loader -nojump -f eboot.nb0
+sb_loader -trans 0x70200000 -f nk.nb0
+sb_loader -exec 0x70041800
+
+In this example, eboot.nb0 and nk.nb0 are downloaded and run from address 0x70041800.
+
+First command: the command is used to extract plugin from image eboot.nb0 and run the plugin. Parameter "nojump" indicates ROM will not jump into eboot.nb0 and and run it.
+
+Second command: the command is used to transfer an image to RAM of target platform. Parameter "0x70200000" is the starting physical address of the image is stored in RAM, change it according to your image setting. Parameter "nk.nb0" is the name of your image.The command can be executed for multiple times if you have multiple images need to be downloaded.
+
+Last command: the command is used to run an image in RAM.  Parameter "0x70041800" is the physical address of the first instruct of the image where ROM will jump and run in RAM.
+

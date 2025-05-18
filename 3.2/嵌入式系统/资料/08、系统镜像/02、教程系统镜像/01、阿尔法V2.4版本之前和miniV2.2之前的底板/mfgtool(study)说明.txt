@@ -1,0 +1,27 @@
+【注意】
+1、此烧录工具烧写完的系统只是用于方便学习教程上的驱动开发章节，内核、设备树需要根据驱动开发指南来逐步学习和添加。
+
+2、此烧录工具的烧写使用方法和后续挂载学习可以参考视频
+https://www.bilibili.com/video/BV1n541197rk?p=11&vd_source=db1b06c2412923a77448ca29c776e9ac
+
+3、mfgtool(study)是基于开发板光盘A-基础资料\05、开发工具\04、正点原子MFG_TOOL出厂固件烧录工具修改而来，使用mfgtool(study)前请确保烧写环境正常，建议先看开发板光盘A-基础资料\10、用户手册\I.MX6U用户快速体验 的2.2.1小节熟悉烧录步骤。
+
+4、mfgtool(study).zip，解压后得到一个mfgtool烧录工具，此烧录工具里已经打包好教程学习用到的uboot、的内核、设备树和文件系统，基于此系统可以学习第四期的驱动开发。
+使用此烧录工具可以直接烧写教程移植好的系统，emmc版本开发板使用study-Mfgtool2-eMMC-ddr512-eMMC.vbs烧写，nand版本开发板使用study-Mfgtool2-NAND-ddr256-NAND.vbs烧写。
+emmc版本的开发板烧写完后需要设置uboot环境变量驱动，参考此烧录工具中的【EMMC-bootcmd-bootargs】说明；nand版本的开发板烧写完后需要设置uboot环境变量启动，参考此烧录工具中的【NAND-bootcmd-bootargs】说明。
+需要制作SD卡系统卡的话可以使用study-Mfgtool2-eMMC-ddr512-SDCard.vbs或者study-Mfgtool2-NAND-ddr256-SDCard.vbs
+
+5、mfgtool(study)\Profiles\Linux\OS Firmware\files\boot目录下的是驱动教程用到的文件，这些文件可以通过开发板光盘A-基础资料\01、例程源码\10、开发板教程对应的uboot和linux源码编译而来。
+mfgtool(study)\Profiles\Linux\OS Firmware\files\boot这个目录下是驱动教程用到的uboot、内核和设备树文件。
+imx6ull-alientek-emmc.dtb 驱动教程设备树文件（emmc版本）
+imx6ull-alientek-nand.dtb 驱动教程设备树文件（nand版本）
+u-boot-emmc.imx 驱动教程uboot文件（emmc版本）
+u-boot-nand.imx 驱动教程uboot文件（nand版本）
+zImage 驱动教程内核文件
+
+6、按照教程驱动学习开发，需要编译开发板光盘A-基础资料\01、例程源码\10、开发板教程对应的uboot和linux源码\linux-imx-rel_imx_4.1.15_2.1.0_ga_alientek内核源码，基于此源码去编译驱动例程来学习。
+
+
+
+
+

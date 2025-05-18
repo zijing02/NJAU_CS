@@ -1,0 +1,9 @@
+Requirement:
+- libusb-1.0-0-dev
+- libusb-1.0-0
+
+Usage:
+./linux-runvbs.sh <vbs file> to kick off mfgtool for specific platform,
+or launch ./linux-cvbs.sh to covert all vbs to bash scripts.
+
+
