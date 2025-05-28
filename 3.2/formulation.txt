@@ -1,0 +1,5 @@
+替换
+=SUBSTITUTE(SUBSTITUTE(TRIM(B2), "(", "（"), ")", "）")
+
+寻找插入
+=IFERROR(INDEX(Sheet2!C$2:C$516,MATCH(C3&F3,Sheet2!A$2:A$516&Sheet2!B$2:B$516,0)),0)
