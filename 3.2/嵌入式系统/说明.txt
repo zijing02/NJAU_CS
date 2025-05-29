@@ -1,16 +1,25 @@
 主链接：
 http://47.111.11.73/docs/boards/arm-linux/zdyz-i.mx6ull.html
 
+Qt源码：
+https://pan.baidu.com/s/1Z_AlP2M1H8R_TjIWN-Pk0g#list/path=%2F&parentPath=%2Fsharelink1102113311042-1001303729642344
+
 bilibili链接：
 https://space.bilibili.com/394620890/lists
 
-开发板编码：
+驱动下载：
+https://share.weiyun.com/rtFrbOMM
+
+开发板启动编码：
 （1） USB OTG烧写设置：0100 0000（2覆写出场系统）       （2） SD 卡启动设置：1000 0010 （17）
 （3） EMMC 启动设置：1010 0110（1367）                 （4） NAND FLASH启动设置：1000 1001（用不上）
 
 连接前务必关闭windows以及ubuntu防火墙，对不同开发板，需要使用不同版本的uboot，具体自己挨个烧录试
+且如果板子为2.4+则系统中镜像文件也需要更换
 
-常用命令
+tftp/nfs常用命令：
+
+编译命令，一般板子的系统会编译好 mx6ull_alientek_emmc.sh 文件，直接执行即可
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- distclean 
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- mx6ull_14x14_ddr512_emmc_defconfig 
 make V=1 ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- -j12 
