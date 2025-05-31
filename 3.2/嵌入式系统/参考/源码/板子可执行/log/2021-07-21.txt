@@ -1,0 +1,12 @@
+09:06:50:learning a tomato clock -> 1 minutes
+09:10:58:(benchmark,基准)->(感兴趣区域)
+09:11:38:learning a tomato clock -> 1 minutes
+09:15:46:(state-of-the-art,最先进的)->(123)
+09:15:52:(fine tune,微调)->(骨干)
+
+1 minutes
+09:10:58:(benchmark,基准)->(感兴趣区域)
+09:11:38:learning a tomato clock -> 1 minutes
+09:15:46:(state-of-the-art,最先进的)->(123)
+09:15:52:(fine tune,微调)->(骨干)
+09:30:18:learning a tomato clock -> 15 minutes

@@ -1,0 +1,90 @@
+10:18:02:(apple,n.苹果)->(n.洛谷)
+10:18:06:(state-of-the-art,最先进的)->(感受野)
+10:18:11:(backbone,骨干)->( 超参数)
+10:20:47:(state-of-the-art,最先进的)->(12)
+10:20:56:(anchor,锚点,锚框)->()
+10:20:59:(anchor,锚点,锚框)->(ancho)
+10:22:51:(state-of-the-art,最先进的)->(13)
+10:22:59:(anchor,锚点,锚框)->(an)
+10:24:09:(state-of-the-art,最先进的)->()
+10:24:12:(state-of-the-art,最先进的)->(state-of-the-ar)
+10:24:22:(state-of-the-art,最先进的)->()
+10:24:27:(anchor,锚点,锚框)->()
+10:27:16:(state-of-the-art,最先进的)->()
+10:27:21:(state-of-the-art,最先进的)->(state-of-the-ar)
+10:27:57:(state-of-the-art,最先进的)->()
+10:35:31:(state-of-the-art,最先进的)->()
+10:35:43:(state-of-the-art,最先进的)->()
+10:36:21:(state-of-the-art,最先进的)->()
+10:38:44:(state-of-the-art,最先进的)->()
+10:41:27:(state-of-the-art,最先进的)->()
+10:42:48:(state-of-the-art,最先进的)->()
+11:09:21:learning a tomato clock -> 15 minutes
+11:29:21:learning a tomato clock -> 15 minutes
+11:45:17:(state-of-the-art,最先进的)->(n.苹果)
+11:48:53:(state-of-the-art,最先进的)->(n.苹果)
+11:50:50:(ensemble model,集成模型)->(微调)
+11:50:59:(hyperparameter, 超参数)->(特征图)
+11:51:04:(pipeline,流水线)->(集成模型)
+11:51:05:(pipeline,流水线)->(没有花里胡哨的方法)
+11:51:15:(region of interest,感兴趣区域)->(真实值)
+11:51:17:(receptive field,感受野)->(收敛速度)
+11:51:20:(receptive field,感受野)->(感兴趣区域)
+11:51:26:(off-the-shelf,现成的)->( 超参数)
+11:51:31:(without bells and whistles,没有花里胡哨的方法)->(奇异值)
+11:51:35:(without bells and whistles,没有花里胡哨的方法)->(现成的)
+11:56:23:(backbone,骨干)->( 超参数)
+11:56:47:(ground truth,真实值)->(收敛速度)
+11:56:59:(feature map,特征图)->(感受野)
+11:57:05:(hyperparameter, 超参数)->(特征图)
+11:57:13:(off-the-shelf,现成的)->( 超参数)
+11:57:23:(eigenvalue,特征值)->(感兴趣区域)
+11:57:27:(singular value,奇异值)->(基准)
+11:57:45:(deduce,vt.推断,推理)->(vt.vi. 调停,调解)
+11:57:48:(captive,adj.被关押的,非自愿的)->(adj. 完全相同的)
+11:57:55:(malfunction,n.失灵，故障)->(vt.推断,推理)
+11:57:57:(interpretability,n.可解释性)->(vt.vi. 调停,调解)
+12:00:43:(state-of-the-art,最先进的)->(感受野)
+12:00:52:(anchor,锚点,锚框)->(特征值)
+12:01:53:(state-of-the-art,最先进的)->(感受野)
+12:01:58:(anchor,锚点,锚框)->(特征值)
+12:03:32:(state-of-the-art,最先进的)->(感受野)
+12:03:33:(state-of-the-art,最先进的)->(感兴趣区域)
+12:03:35:(state-of-the-art,最先进的)->(集成模型)
+12:03:44:(backbone,骨干)->(基准)
+12:03:46:(ensemble model,集成模型)->(真实值)
+12:04:09:(state-of-the-art,最先进的)->(微调)
+12:04:10:(state-of-the-art,最先进的)->(集成模型)
+12:04:28:(deduce,vt.推断,推理)->(n.苹果)
+12:04:32:(identical,adj. 完全相同的)->(adj.被关押的,非自愿的)
+12:04:34:(identical,adj. 完全相同的)->(vt.vi. 调停,调解)
+12:04:35:(identical,adj. 完全相同的)->(n.全景图)
+12:11:09:learning a tomato clock -> 15 minutes
+12:16:48:learning a tomato clock -> 15 minutes
+12:31:09:learning a tomato clock -> 15 minutes
+12:36:48:learning a tomato clock -> 15 minutes
+12:51:09:learning a tomato clock -> 15 minutes
+12:56:48:learning a tomato clock -> 15 minutes
+13:11:09:learning a tomato clock -> 15 minutes
+13:16:48:learning a tomato clock -> 15 minutes
+13:31:09:learning a tomato clock -> 15 minutes
+13:36:48:learning a tomato clock -> 15 minutes
+13:51:09:learning a tomato clock -> 15 minutes
+13:56:48:learning a tomato clock -> 15 minutes
+14:11:09:learning a tomato clock -> 15 minutes
+14:16:48:learning a tomato clock -> 15 minutes
+14:31:09:learning a tomato clock -> 15 minutes
+14:36:48:learning a tomato clock -> 15 minutes
+14:51:09:learning a tomato clock -> 15 minutes
+14:56:48:learning a tomato clock -> 15 minutes
+15:11:09:learning a tomato clock -> 15 minutes
+17:59:01:(anchor,锚点,锚框)->(特征值)
+17:59:36:(anchor,锚点,锚框)->()
+18:03:06:learning a tomato clock -> 5 minutes
+21:39:48:learning a tomato clock -> 15 minutes
+21:42:58:(anchor,锚点,锚框)->()
+21:43:31:(state-of-the-art,最先进的)->(感受野)
+21:59:48:learning a tomato clock -> 15 minutes
+22:19:48:learning a tomato clock -> 15 minutes
+22:39:48:learning a tomato clock -> 15 minutes
+22:59:48:learning a tomato clock -> 15 minutes

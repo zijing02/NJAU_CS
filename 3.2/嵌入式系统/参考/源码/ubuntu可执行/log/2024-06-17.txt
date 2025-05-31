@@ -1,0 +1,12 @@
+08:08:59:learning a tomato clock -> 1 minutes
+08:12:47:(feature map,特征图)->(感受野)
+08:13:19:learning a tomato clock -> 1 minutes
+09:07:36:(anchor,锚点,锚框)->(集成模型)
+09:07:38:(benchmark,基准)->(最先进的)
+09:07:39:(benchmark,基准)->(流水线)
+09:07:40:(benchmark,基准)->(感兴趣区域)
+09:07:41:(backbone,骨干)->(基准)
+09:07:59:(anchor,锚点,锚框)->(benchmark)
+09:10:07:learning a tomato clock -> 3 minutes
+10:12:34:learning a tomato clock -> 15 minutes
+10:32:34:learning a tomato clock -> 15 minutes
