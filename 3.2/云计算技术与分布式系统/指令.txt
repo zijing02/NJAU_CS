@@ -1,0 +1,160 @@
+Hadoop指令
+使用嵌入式系统的ubuntu
+hadoop：https://www.bilibili.com/video/BV1eZ4y1k7LZ/?spm_id_from=333.337.search-card.all.click&vd_source=2a06b51342cc95fac0018ac4e072157d
+在alientek中：
+新建用户：sudo useradd -m hadoop -s /bin/bash
+设置新用户密码：sudo passwd hadoop
+添加管理员权限：sudo adduser hadoop sudo
+
+在hadoop中：
+更新软件：sudo apt-get update
+安装ssh server：sudo -apt-get install openssh-server
+登录ssh：ssh localhost
+注销ssh：exit
+进入ssh目录：cd ~/.ssh/
+生成密钥：ssh-keygen -t rsa
+将密钥加入授权：cat ./id_rsa.pub >> ./authorized_keys
+
+安装java：sudo apt-get install openjdk-8-jdk
+查看java版本：java -version
+配置java环境：gedit ~/.bashrc
+在文件中添加：export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+生效命令：source ~/.bashrc
+查看java：echo $JAVA_HOME
+查看位置：whereis java
+
+下载hadoop：官网下载
+解压：sudo tar -zxf ~/下载/hadoop-3.3.5.tar.gz -C /usr/local
+进入相关文件夹：cd /usr/local
+修改文件夹名称：sudo mv ./hadoop-3.3.5/ ./hadoop
+赋予权限：sudo chmod 777 hadoop ./hadoop
+进入hadoop文件夹查看hadoop是否可用：./bin/hadoop version
+
+在hadoop文件夹中：cd /usr/local/hadoop
+
+试运行程序：
+创建文件夹：mkdir ./input
+将相关数据拷贝到input文件夹作为输入：cp ./etc/hadoop/*.xml ./input
+筛选其中符合正则表达式的单词并统计出现次数，输出结果到output：./bin/hadoop jar ./share/hadoop/mapreduce/hadoop-mapreduce-examples-*.jar grep ./input ./output 'dfs[a-z.]+'
+再次运行需要删除output才不报错：rm -r ./output
+
+伪分布式配置：
+修改配置文件：sudo gedit ./etc/hadoop/core-site.xml
+<configuration>
+	<property>
+		<name>hadoop.tmp.dir</name>
+
+<value>file:/usr/local/hadoop/tmp</value>
+	<description>Abase for other
+temporary directories.</description>
+	</property>
+	<property>
+		<name>fs.defaultFS</name>
+
+<value>hdfs://localhost:9000</value>
+	</property>
+</configuration>
+
+修改配置文件：sudo gedit ./etc/hadoop/hdfs-site.xml
+<configuration>
+	<property>
+		<name>dfs.replication</name>
+		<value>1</value>
+	</property>
+	<property>
+
+<name>dfs.namenode.name.dir</name>
+
+<value>file:/usr/local/hadoop/tmp/dfs/name</value>
+	</property>
+	<property>
+
+<name>dfs.datanode.data.dir</name>
+
+<value>file:/usr/local/hadoop/tmp/dfs/data</value>
+	</property>
+</configuration>
+NameNode格式化：./bin/hdfs namenode -format
+开启NameNode、DataNode守护进程：./sbin/start-dfs.sh
+jps查看当前节点
+localhost:9870
+进入线上hadoop：./bin/hdfs dfs -mkdir -p /user/hadoop
+./bin/hdfs dfs -mkdir input
+./bin/hdfs dfs -put ./etc/hadoop/*.xml ./input
+./bin/hdfs dfs  ls input
+./bin/hadoop jar ./share/hadoop/mapreduce/hadoop-mapreduce-examples-*.jar grep ./input ./output 'dfs[a-z.]+'
+./bin/hdfs dfs -cat output/*
+rm -r ./output
+获取到本地：./bin/hdfs dfs -get output ./output
+./bin/hdfs dfs rm -r ./output
+停止：./sbin/stop-dfs.sh
+
+
+遇到问题修复
+# 确保密钥文件权限为 600
+chmod 600 ~/.ssh/id_rsa
+chmod 600 ~/.ssh/id_rsa.pub
+
+# 确保 .ssh 目录权限为 700
+chmod 700 ~/.ssh
+
+# 先杀死现有代理
+eval $(ssh-agent -k)
+
+# 启动新代理并添加密钥
+eval $(ssh-agent -s)
+ssh-add ~/.ssh/id_rsa
+
+# 确认公钥已添加到目标主机的 ~/.ssh/authorized_keys
+ssh-copy-id -i ~/.ssh/id_rsa.pub localhost
+ssh-copy-id -i ~/.ssh/id_rsa.pub ubuntu16
+
+sudo service ssh restart
+
+# 测试连接到各节点
+ssh localhost
+ssh ubuntu16
+
+ssh-keygen
+sudo vim /etc/hosts
+ 192.168.143.129 slave
+ 192.168.143.130 slave2
+ 192.168.143.128 master
+cd /usr/local/hadoop/etc/hadoop
+sudo vim workers
+ master
+ slave
+ slave2
+ssh-copy-id localhost
+ssh-copy-id slave
+ssh-copy-id slave2
+start-all.sh
+stop-all.sh
+
+
+
+
+spark指令
+安装解压：sudo tar -zxf ~/下载/spark-2.1.0-bin-without-hadoop.tgz -C /usr/local/
+改名字： sudo mv ./spark-3.5.5-bin-without-hadoop ./spark
+sudo chown -R hadoop:hadoop ./spark
+
+进入spark文件夹
+拷贝、修改配置文件：cp ./conf/spark-env.sh.template ./conf/spark-env.sh
+添加：export SPARK_DIST_CLASSPATH=$(/usr/local/hadoop/bin/hadoop classpath)
+配置环境：vim ~/.bashrc
+export HADOOP_HOME=/usr/local/hadoop
+export SPARK_HOME=/usr/local/spark
+
+export PYTHONPATH=$SPARK_HOME/python:$SPARK_HOME/python/lib/py4j-0.10.4-src.zip:$PYTHONPATH
+export PYSPARK_PYTHON=python3
+export PATH=$HADOOP_HOME/bin:$SPARK_HOME/bin:$PATH 
+
+cd /usr/local/spark
+bin/run-example SparkPi
+bin/run-example SparkPi 2>&1 | grep "Pi is"
+
+
+
+
+
