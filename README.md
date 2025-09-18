@@ -25,7 +25,7 @@
 [├──├──心理安全教育](/1.1/心理安全教育)&emsp;&ensp;[├──├──数学分析](/1.2/数学分析)&emsp;&emsp;&ensp;[├──├──社会调查方法](/2.1/社会调查方法)&emsp;&emsp;&emsp;&ensp;[├──├──算法设计与分析](/2.2/算法设计与分析)<br>
 [├──├──形式与政策](/1.1/形式与政策)&emsp;&emsp;&ensp;[├──├──数字电路](/1.2/数字电路)&emsp;&emsp;&ensp;[├──├──数据结构课程设计](/2.1/数据结构课程设计)&emsp;&ensp;[├──├──习思想](/2.2/习思想)<br>
 [├──├──学科导论](/1.1/学科导论)&emsp;&emsp;&emsp;&ensp;[├──├──物理学](/1.2/物理学)&emsp;&emsp;&ensp;&ensp;&ensp;[├──├──数据库系统](/2.1/数据库系统)&emsp;&emsp;&emsp;&emsp;&ensp;[└──└──形势与政策](/2.2/形势与政策)<br>
-[└──└──中文写作](/1.1/中文写作)&emsp;&emsp;&emsp;&ensp;[├──├──线性代数](/1.2/线性代数)&emsp;&emsp;&ensp;[├──├──系统科学概论](/2.1/系统科学概论)&emsp;&emsp;<br>
+[├──└──中文写作](/1.1/中文写作)&emsp;&emsp;&emsp;&ensp;[├──├──线性代数](/1.2/线性代数)&emsp;&emsp;&ensp;[├──├──系统科学概论](/2.1/系统科学概论)&emsp;&emsp;<br>
 [├]()&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&ensp;[└──└──形势与政策](/1.2/形势与政策)&emsp;&ensp;[└──└──形势与政策](/2.1/形势与政策)&emsp;&emsp;<br>
 [├]()<br>
 [├──3.1](/3.1)&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;[├──3.2](/3.2)&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&ensp;[├──4.1](/4.1)<br>
@@ -40,7 +40,7 @@
 [├──├──软件工程课设](/3.1/软件工程课设)&emsp;&emsp;&emsp;&ensp;[├──├──Ex](/0.0/Ex)<br>
 [├──├──食品安全生物监测](/3.1/食品安全生物监测)&emsp;&ensp;[├──├──Info](/0.0/Info)<br>
 [├──├──食品生物技术](/3.1/食品生物技术)&emsp;&emsp;&emsp;&ensp;[├──├──work_piglet](/0.0/work_piglet)<br>
-[├──├──食品添加剂](/3.1/食品添加剂)&emsp;&emsp;&emsp;&emsp;&ensp;[├──└──SRT](/0.0/SRT)<br>
+[├──├──食品添加剂](/3.1/食品添加剂)&emsp;&emsp;&emsp;&emsp;&ensp;[└──└──SRT](/0.0/SRT)<br>
 [├──├──图像处理](/3.1/图像处理)<br>
 [├──├──图形学](/3.1/图形学)<br>
 [├──├──形策](/3.1/形策)<br>
