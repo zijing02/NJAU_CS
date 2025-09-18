@@ -1,0 +1,43 @@
+#include <bits/stdc++.h>
+using namespace std;
+struct ListNode
+{
+    int val;
+    ListNode *next;
+    ListNode() : val(0), next(nullptr) {}
+    ListNode(int x) : val(x), next(nullptr) {}
+    ListNode(int x, ListNode *next) : val(x), next(next) {}
+};
+// 双指针判断是否存在环形链表，快指针如果和慢指针相遇，则存在环形链表
+// 判断入口
+// 假设链表的非环部分长度为x，环的入口到相遇点的距离为y，相遇点到环的入口的距离为z
+// 在相遇时候，假设慢指针走过的距离为x+y，快指针走过的距离为x+y+n(y+z)
+// 则有2(x+y) = x+y+n(y+z) => x = (n-1)(y+z)+z
+// 也就是说，当快慢指针相遇时，如果让一个指针从head出发，另一个指针从相遇点出发，
+// 则两个指针在环的入口处相遇
+ListNode *detectCycle(ListNode *head)
+{
+    ListNode *detectCycle(ListNode *head) {
+        ListNode* fast = head;
+        ListNode* slow = head;
+        while(fast != NULL && fast->next != NULL) {
+            slow = slow->next;
+            fast = fast->next->next;
+            // 快慢指针相遇，此时从head 和 相遇点，同时查找直至相遇
+            if (slow == fast) {
+                ListNode* index1 = fast;
+                ListNode* index2 = head;
+                while (index1 != index2) {
+                    index1 = index1->next;
+                    index2 = index2->next;
+                }
+                return index2; // 返回环的入口
+            }
+        }
+        return NULL;
+    }
+}
+int main()
+{
+    return 0;
+}

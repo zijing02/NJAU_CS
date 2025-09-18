@@ -1,0 +1,129 @@
+// 哈希表
+#include <bits/stdc++.h>
+using namespace std;
+// 在一个数组中找到3个数形成的三元组，它们的和为0，不能重复使用（三数下标互不相同），且三元组不能重复。
+// b（存储）== 0-(a+c)（检索）
+vector<vector<int>> threeSum(vector<int> &nums)
+{
+    vector<vector<int>> result;
+    // 先排序，方便去重
+    sort(nums.begin(), nums.end());
+
+    for (int i = 0; i < nums.size(); i++)
+    {
+        // 如果a是正数，a<b<c，不可能形成和为0的三元组
+        if (nums[i] > 0)
+            break;
+
+        // [a, a, ...] 如果本轮a和上轮a相同，那么找到的b，c也是相同的，所以去重a
+        if (i > 0 && nums[i] == nums[i - 1])
+            continue;
+
+        // 这个set的作用是存储b
+        unordered_set<int> set;
+
+        for (int k = i + 1; k < nums.size(); k++)
+        {
+            // 去重b=c时的b和c
+            if (k > i + 2 && nums[k] == nums[k - 1] && nums[k - 1] == nums[k - 2])
+                continue;
+
+            // a+b+c=0 <=> b=0-(a+c)
+            int target = 0 - (nums[i] + nums[k]);
+            if (set.find(target) != set.end())
+            {
+                result.push_back({nums[i], target, nums[k]}); // nums[k]成为c
+                set.erase(target);
+            }
+            else
+            {
+                set.insert(nums[k]); // nums[k]成为b
+            }
+        }
+    }
+
+    return result;
+}
+int main()
+{
+    return 0;
+}
+
+// 双指针
+#include <bits/stdc++.h>
+using namespace std;
+// 思路：排序 + 双指针
+// 设置两个指针，一个指向当前元素的下一个位置，另一个指向数组末尾
+// 计算三个数的和，如果和小于0，说明左指针指向的数太小，左指针右移
+// 如果和大于0，说明右指针指向的数太大，右指针左移
+// 如果和等于0，记录结果，并将两个指针移动到下一个不同的元素
+vector<vector<int>> threeSum(vector<int> &nums)
+{
+    vector<vector<int>> ans;
+    // 先排序，便于去重
+    sort(nums.begin(), nums.end());
+    for (int i = 0; i < nums.size(); i++)
+    {
+        if (i > 0 && nums[i] == nums[i - 1])
+            continue;
+        int target = -nums[i];
+        int front = i + 1;
+        int back = nums.size() - 1;
+        while (front < back)
+        {
+            int sum = nums[front] + nums[back];
+            if (sum < target)
+                front++;
+            else if (sum > target)
+                back--;
+            else
+            {
+                vector<int> triplet(3, 0);
+                triplet[0] = nums[i];
+                triplet[1] = nums[front];
+                triplet[2] = nums[back];
+                ans.push_back(triplet);
+                // 将前后指针移动到下一个不同的元素
+                while (front < back && nums[front] == triplet[1])
+                    front++;
+                while (front < back && nums[back] == triplet[2])
+                    back--;
+            }
+        }
+    }
+    return ans;    
+}
+int main()
+{
+    return 0;
+}
+
+
+// tle
+#include <bits/stdc++.h>
+using namespace std;
+vector<vector<int>> threeSum(vector<int> &nums)
+{
+    unordered_map<int, int> mp;
+    vector<vector<int>> ans;
+    for(int i = 0; i < nums.size(); i++)
+    {
+        for(int j = i + 1; j < nums.size(); j++)
+        {
+            int third = -(nums[i] + nums[j]);
+            if(mp.find(third) != mp.end() && mp[third] != i && mp[third] != j)
+            {
+                vector<int> temp = {nums[i], nums[j], third};
+                sort(temp.begin(), temp.end());
+                if(find(ans.begin(), ans.end(), temp) == ans.end())
+                    ans.push_back(temp);
+            }
+            mp.insert({nums[j], j});
+        }
+    }
+    return ans;
+}
+int main()
+{
+    return 0;
+}

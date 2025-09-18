@@ -1,0 +1,41 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int n, m, sum = 0;
+    cin >> n >> m;
+    vector<vector<int>> nums(n, vector<int>(m, 0));
+    vector<int> row(n, 0), column(m, 0);
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < m; j++)
+        {
+            cin >> nums[i][j];
+            sum += nums[i][j];
+        }
+    }
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < m; j++)
+        {
+            row[i] += nums[i][j];
+            column[j] += nums[i][j];
+        }
+    }
+    int result = INT_MAX;
+    int row_sum = 0, column_sum = 0;
+    for (int i = 0; i < n; i++)
+    {
+        row_sum += row[i];
+        result = min(result, abs(sum - 2 * row_sum));
+    }
+    for (int j = 0; j < m; j++)
+    {
+        column_sum += column[j];
+        result = min(result, abs(sum - 2 * column_sum));
+    }
+    cout << result << endl;
+    return 0;
+}
+
+

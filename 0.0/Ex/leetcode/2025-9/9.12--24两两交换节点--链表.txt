@@ -1,0 +1,105 @@
+#include <bits/stdc++.h>
+using namespace std;
+struct ListNode
+{
+    int val;
+    ListNode *next;
+    ListNode() : val(0), next(nullptr) {}
+    ListNode(int x) : val(x), next(nullptr) {}
+    ListNode(int x, ListNode *next) : val(x), next(next) {}
+};
+ListNode *swapPairs(ListNode *head)
+{
+    if (head == NULL || head->next == NULL)
+        return head;
+    ListNode *newHead = head->next;
+    ListNode *prev = NULL;
+    ListNode *curr = head;
+    while (curr && curr->next)
+    {
+        ListNode *cnnext = curr->next->next;
+        ListNode *cnext = curr->next;
+        cnext->next = curr;
+        curr->next = cnnext;
+        if (prev != NULL)
+        {
+            prev->next = cnext;
+        }
+        prev = curr;
+        curr = cnnext;
+    }
+    return newHead;
+}
+int main()
+{
+
+    return 0;
+}
+
+
+#include <bits/stdc++.h>
+using namespace std;
+struct ListNode
+{
+    int val;
+    ListNode *next;
+    ListNode() : val(0), next(nullptr) {}
+    ListNode(int x) : val(x), next(nullptr) {}
+    ListNode(int x, ListNode *next) : val(x), next(next) {}
+};
+ListNode *swapPairs(ListNode *head)
+{
+    if (head == NULL || head->next == NULL)
+        return head;
+    ListNode *prev = head;
+    ListNode *curr = head->next;
+    head = curr;
+    ListNode *next = curr->next;
+    curr->next = prev;
+    prev->next = swapPairs(next);
+    return head;
+}
+int main()
+{
+
+    return 0;
+}
+
+#include <bits/stdc++.h>
+using namespace std;
+struct ListNode
+{
+    int val;
+    ListNode *next;
+    ListNode() : val(0), next(nullptr) {}
+    ListNode(int x) : val(x), next(nullptr) {}
+    ListNode(int x, ListNode *next) : val(x), next(next) {}
+};
+ListNode *swapPairs(ListNode *head)
+{
+    if (head == NULL || head->next == NULL)
+        return head;
+    ListNode *prev = head;
+    ListNode *curr = head->next;
+    head = curr;
+    ListNode *next = curr->next;
+    while (true)
+    {
+        curr->next = prev;
+        if (next == NULL || next->next == NULL)
+        {
+            prev->next = next;
+            break;
+        }
+        prev->next = next->next;	//此处由于后续节点还需要交换，所以pre.next应指向下一对节点的后一个
+        prev = next;
+        curr = prev->next;
+        next = curr->next;
+    }
+    return head;
+}
+int main()
+{
+
+    return 0;
+}
