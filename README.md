@@ -10,6 +10,8 @@
 &emsp;&emsp;诸位若有新的资料想要加入此仓库请在上方的&ensp;*Issues*&ensp;中留言，我看到后会联系你的。
 ### 结语
 &emsp;&emsp;祝你我学业有成，前程似锦。
+### License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 ### 附目录结构
 [NJAU_CS](/)  
 [├──1.1](/1.1)&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;[├──1.2](/1.2)&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&ensp;[├──2.1](/2.1)&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;[├──2.2](/2.2)<br>
