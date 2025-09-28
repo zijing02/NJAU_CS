@@ -1,0 +1,62 @@
+#include <bits/stdc++.h>
+using namespace std;
+// 高精度减法
+// 使用字符串存储大整数
+// 数组开头存储数字个位，末尾存储数字最高位
+// 模拟人工减法过程
+// 注意：此处实现的是大整数加法，并没有处理负数的情况
+
+vector<int> subtract(vector<int> &A, vector<int> &B)
+{
+    vector<int> C;
+    // 高位借位
+    int t = 0;
+    for (int i = 0; i < A.size(); i++)
+    {
+        t = A[i] - t; // 减去借位
+
+        // 判断B是否还有对应位
+        if (i < B.size())
+            t -= B[i];
+
+        // 当前位结果，t只有两种结果
+        // 一种是够了，即t>=0，直接就是t
+        // 另一种是不够，即t<0，需要向高位借1，当前位结果是t+10
+        // 统一写法就是(t+10)%10
+        C.push_back((t + 10) % 10);
+        if (t < 0)
+            t = 1;
+        else
+            t = 0;
+    }
+
+    // 去掉前导0
+    while (C.size() > 1 && C.back() == 0)
+        C.pop_back();
+    return C;
+}
+
+int main()
+{
+    // 读入方法，使用字符串一整行一起读入后反转字符串
+    string a, b;
+
+    // 判断a是否大于等于b
+    if (a.size() < b.size() || (a.size() == b.size() && a < b))
+    {
+        cout << "-";
+        swap(a, b);
+    }
+
+    vector<int> A, B, C;
+    cin >> a >> b;
+    for (int i = a.size() - 1; i >= 0; i--)
+        A.push_back(a[i] - '0');
+    for (int i = b.size() - 1; i >= 0; i--)
+        B.push_back(b[i] - '0');
+
+    C = subtract(A, B);
+    for (int i = C.size() - 1; i >= 0; i--)
+        cout << C[i];
+    return 0;
+}

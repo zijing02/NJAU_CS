@@ -1,0 +1,45 @@
+#include <bits/stdc++.h>
+using namespace std;
+int n, q, k, a[100005];
+// 整数二分
+int main()
+{
+    cin >> n >> q;
+    for (int i = 0; i < n; i++)
+        cin >> a[i];
+    for (int i = 0; i < q; i++)
+    {
+        cin >> k;
+        int l = 0, r = n - 1;
+        while (l < r)
+        {
+            int mid = (l + r) / 2;
+            // 查找第一个大于等于k的数
+            if (a[mid] >= k)
+                r = mid;
+            else
+                l = mid + 1;
+        }
+        if (a[l] != k)
+            cout << "-1 -1";
+        else
+        {
+            cout << l << " ";
+            l = 0;
+            r = n - 1;
+            while (l < r)
+            {
+                int mid = (l + r + 1) / 2;
+                // 查找最后一个小于等于k的数
+                // 在这里需要+1处理，防止l等于自身，出现死循环
+                if (a[mid] <= k)
+                    l = mid;
+                else
+                    r = mid - 1;
+            }
+            cout << l;
+        }
+        cout << endl;
+    }
+    return 0;
+}

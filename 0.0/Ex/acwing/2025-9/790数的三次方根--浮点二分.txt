@@ -1,0 +1,27 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main()
+{
+    double x, absx;
+    cin >> x;
+
+    // 先计算绝对值的三次方根
+    absx = fabs(x);
+
+    // 和 1.0 比较，是因为：
+    // 如果 absx < 1.0，三次方根在 [0, 1.0] 之间
+    // 如果 absx >= 1.0，三次方根在 [0, absx] 之间
+    double l = min(absx, 0.0), r = max(absx, 1.0);
+    while (r - l > 1e-8)
+    {
+        double mid = (l + r) / 2;
+        if (mid * mid * mid < absx)
+            l = mid;
+        else
+            r = mid;
+    }
+
+    // 根据 x 的正负号，输出结果
+    printf("%lf\n", x < 0 ? -l : l);
+    return 0;
+}

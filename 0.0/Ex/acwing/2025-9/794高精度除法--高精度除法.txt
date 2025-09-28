@@ -1,0 +1,38 @@
+#include <bits/stdc++.h>
+using namespace std;
+// 高精度除法
+// 除法其实可以正序进行操作，但由于其他大整数四则运算均是逆序存储的，
+// 因此这里仍然采用逆序存储的方式进行除法运算
+vector<int> div(vector<int> &A, int b, int &r)
+{
+    vector<int> C;
+    r = 0;
+    for (int i = A.size() - 1; i >= 0; i--)
+    {
+        // 每一次余数=上一次余数*10+当前位
+        r = r * 10 + A[i];
+        C.push_back(r / b);
+        r = r % b;
+    }
+
+    // 上述循环得到的C是正序的，但在大整数乘法中需要将C倒置
+    reverse(C.begin(), C.end());
+    while (C.size() > 1 && C.back() == 0)
+        C.pop_back();
+    return C;
+}
+int main()
+{
+    string a;
+    int b, r;
+    vector<int> A, C;
+    cin >> a >> b;
+    for (int i = a.size() - 1; i >= 0; i--)
+        A.push_back(a[i] - '0');
+    C = div(A, b, r);
+    for (int i = C.size() - 1; i >= 0; i--)
+        cout << C[i];
+    cout << endl
+         << r << endl;
+    return 0;
+}
