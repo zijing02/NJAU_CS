@@ -1,0 +1,52 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int n;
+    cin >> n;
+    int a[n];
+    for (int i = 0; i < n; i++)
+        cin >> a[i];
+    for (int i = 0; i < n; i++)
+    {
+        int cnt = 0;
+        while (a[i])
+        {
+            if (a[i] & 1)
+                cnt++;
+            a[i] >>= 1;
+        }
+        cout << cnt << " ";
+    }
+    return 0;
+}
+
+// 树状数组基本操作
+// lowbit(x)，返回 x 的最低位 1 所在的位置所对应的值，即 x & (-x)
+// -x 是 x 的补码，即 ~x + 1，即 x & (-x) = x & (~x+1)
+// 例如：x = 12（二进制 1100），lowbit(x) = 4（二进制 0100）
+#include <iostream>
+using namespace std;
+int lowbit(int x)
+{
+    return x & (-x);
+}
+int main()
+{
+    int n;
+    cin >> n;
+    while (n--)
+    {
+        int x;
+        cin >> x;
+        int res = 0;
+        while (x)
+        {
+            // 每次减去 x 的最低位 1 所在的位置所对应的值
+            x -= lowbit(x);
+            res++;
+        }
+        cout << res << " ";
+    }
+    return 0;
+}

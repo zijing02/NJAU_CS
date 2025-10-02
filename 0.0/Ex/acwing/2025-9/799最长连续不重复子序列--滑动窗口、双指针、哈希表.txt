@@ -1,0 +1,29 @@
+#include <bits/stdc++.h>
+using namespace std;
+// 朴素算法：
+// 两层循环，暴力求解
+// 双指针，找关系
+// 模板：
+// for(int i = 0; i < n; i++){
+// while(j < n && check(i, j)) j++;
+// res = ...;
+// i = j;修改i指针位置}
+int main()
+{
+    int n, a[100005], s[100005] = {0}, res = 0;
+    cin >> n;
+    for (int i = 0; i < n; i++)
+        cin >> a[i];
+    for (int i = 0, j = 0; i < n; i++)
+    {
+        s[a[i]]++;
+        while (s[a[i]] > 1)
+        {
+            s[a[j]]--;
+            j++;
+        }
+        res = max(res, i - j + 1);
+    }
+    cout << res;
+    return;
+}

@@ -1,0 +1,37 @@
+// 离散化，特指整数离散化
+// 1, 3, 100, 2000
+// ->
+// 0, 1, 2, 3, 4
+// problem:
+// 1.a[]中可能存在重复元素-->sort+unique+erase
+// 2.怎样算出x在离散化之后的值
+// 3.怎样把离散化之后的值映射回原来的值
+#include <bits/stdc++.h>
+using namespace std;
+// 存储待离散化的值
+vector<int> all;
+
+// 二分求出x离散化后的值，找第一个大于等于x的位置
+int find(int x)
+{
+    int l = 0, r = all.size() - 1;
+    while (l < r)
+    {
+        int mid = (l + r) / 2;
+        if (all[mid] >= x)
+            x = mid;
+        else
+            l = mid + 1;
+    }
+
+    // 映射到1...n
+    return r + 1;
+}
+int main()
+{
+    // 排序并去重
+    sort(all.begin(), all.end());
+    all.erase(unique(all.begin(), all.end()), all.end());
+
+    return 0;
+}

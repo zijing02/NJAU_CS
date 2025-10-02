@@ -1,0 +1,186 @@
+// 常用数据结构使用数组模拟进行
+// 单链表：邻接表 --> 存储图、树
+// 双链表：用于优化某些问题
+// 使用两个数组去表示链表，一个存储数值e[N]，一个存储下一个节点的下标ne[N]
+// 空节点下标用 -1 表示
+#include <bits/stdc++.h>
+using namespace std;
+const int N = 10010;
+
+// head表示头节点下标
+// idx当前已经用到了哪个点
+int head, e[N], ne[N], idx;
+void init()
+{
+    head = -1;
+    idx = 0;
+}
+
+// 插入到头节点
+void add_to_head(int x)
+{
+    e[idx] = x;
+    ne[idx] = head;
+    head = idx;
+    idx++;
+}
+
+// 插入到下标是k的点的后面
+void add(int k, int x)
+{
+    e[idx] = x;
+    ne[idx] = ne[k];
+    ne[k] = idx;
+    idx++;
+}
+
+// 将下标是k的后面的点删除
+void remove(int k)
+{
+    ne[k] = ne[ne[k]];
+}
+int main()
+{
+    int m, k, x;
+    char op;
+    cin >> m;
+    init();
+    while (m--)
+    {
+        cin >> op;
+        if (op == 'H')
+        {
+            cin >> x;
+            add_to_head(x);
+        }
+	// 下标从0开始，要减1
+        else if (op == 'I')
+        {
+            cin >> k >> x;
+            add(k - 1, x);
+        }
+        else if (op == 'D')
+        {
+            cin >> k;
+	    // 特判删除头节点
+            if (k == 0)
+                head = ne[head];
+            remove(k - 1);
+        }
+    }
+    for (int i = head; i != -1; i = ne[i])
+        cout << e[i] << " ";
+}
+
+
+// 普通链表的插入、删除
+#include <bits/stdc++.h>
+using namespace std;
+typedef struct Node
+{
+    int data;
+    struct Node *next;
+} LNode, *LinkList;
+// 尾插法
+void CreateList(LinkList &L, int n)
+{
+    L = (LinkList)malloc(sizeof(LNode));
+    LinkList rear = L;
+    L->next = NULL;
+    for (int i = 0; i < n; i++)
+    {
+        LinkList p = (LinkList)malloc(sizeof(LNode));
+        p->next = NULL;
+        cin >> p->data;
+        rear->next = p;
+        rear = p;
+    }
+}
+
+// 头插法
+void CreateList2(LinkList &L, int n)
+{
+    L = (LinkList)malloc(sizeof(LNode));
+    L->next = NULL;
+    for (int i = 0; i < n; i++)
+    {
+        LinkList p = (LinkList)malloc(sizeof(LNode));
+        cin >> p->data;
+        p->next = L->next; // 新节点指向原来的第一个节点
+        L->next = p;       // 头结点指向新节点
+    }
+}
+
+void insertList(LinkList &L, int i, int e)
+{
+    LinkList p = L;
+    int j = 0;
+    while (p && j < i - 1)
+    {
+        p = p->next;
+        j++;
+    }
+    if (!p || j > i - 1)
+        return;
+    LinkList s = (LinkList)malloc(sizeof(LNode));
+    s->data = e;
+    s->next = p->next;
+    p->next = s;
+}
+
+void deleteList(LinkList &L, int i)
+{
+    LinkList p = L;
+    int j = 0;
+    while (p->next && j < i - 1)
+    {
+        p = p->next;
+        j++;
+    }
+    if (!(p->next) || j > i - 1)
+        return;
+    LinkList q = p->next;
+    p->next = q->next;
+    free(q);
+}
+
+void Printf(LinkList L)
+{
+    LinkList p = L->next;
+    while (p != NULL)
+    {
+        cout << p->data << " ";
+        p = p->next;
+    }
+}
+int main()
+{
+    int M;
+    LinkList L;
+    CreateList(L, 0);
+    cin >> M;
+    for (int i = 0; i < M; i++)
+    {
+        char op;
+        cin >> op;
+        if(op =='H'){
+            int val;
+            cin >> val;
+            insertList(L, 1, val);
+        }
+        if (op == 'I')
+        {
+            int pos, val;
+            cin >> pos >> val;
+            insertList(L, pos, val);
+        }
+        else if (op == 'D')
+        {
+            int pos;
+            cin >> pos;
+            deleteList(L, pos);
+        }
+    }
+    Printf(L);
+    return 0;
+}

@@ -1,0 +1,33 @@
+// 队列 先进先出 管
+#include <bits/stdc++.h>
+using namespace std;
+const int N = 100010;
+int q[N], head = 0, tail = -1;
+void init() { head = 0, tail = -1; }
+void push(int x) { q[++tail] = x; }
+void pop(int &x) { x = q[head++]; }
+bool judgeEmpty() { return head <= tail; }
+int returnHead() { return q[head]; }
+int main()
+{
+    int m, x;
+    string op;
+    cin >> m;
+    init();
+    while (m--)
+    {
+        cin >> op;
+        if (op == "push")
+        {
+            cin >> x;
+            push(x);
+        }
+        else if (op == "pop")
+            pop(x);
+        else if (op == "empty")
+            cout << (judgeEmpty() ? "YES" : "NO") << endl;
+        else if (op == "query")
+            cout << returnHead() << endl;
+    }
+    return 0;
+}

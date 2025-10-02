@@ -1,0 +1,33 @@
+// 栈 先进后出 桶
+#include <bits/stdc++.h>
+using namespace std;
+const int N = 10010;
+int stk[N], tt;
+void init() { tt = 0; }
+void push(int x) { stk[++tt] = x; }
+void pop(int &x) { x = stk[tt--]; }
+bool judgeEmpty() { return tt == 0; }
+int top() { return stk[tt]; }
+int main()
+{
+    int m, x;
+    string op;
+    cin >> m;
+    init();
+    while (m--)
+    {
+        cin >> op;
+        if (op == "push")
+        {
+            cin >> x;
+            push(x);
+        }
+        else if (op == "pop")
+            pop(x);
+        else if (op == "empty")
+            cout << (judgeEmpty() ? "YES" : "NO") << endl;
+        else if (op == "query")
+            cout << top() << endl;
+    }
+    return 0;
+}
