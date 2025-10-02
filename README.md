@@ -11,7 +11,7 @@
 ### 结语
 &emsp;&emsp;祝你我学业有成，前程似锦。
 ### License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+&emsp;&emsp;近期检查项目，发现有部分个人信息，请诸位不要滥用，see the[LICENSE](LICENSE) file for details.
 ### 附目录结构
 [NJAU_CS](/)  
 [├──1.1](/1.1)&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;[├──1.2](/1.2)&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&ensp;[├──2.1](/2.1)&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;[├──2.2](/2.2)<br>
