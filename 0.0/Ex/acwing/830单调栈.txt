@@ -1,0 +1,24 @@
+// 单调栈
+// 找左边最近的小数
+// 如果a[x]>=a[y]并且x<y则a[x]永远不会作为答案中的一员
+#include <bits/stdc++.h>
+using namespace std;
+const int N = 100010;
+int stk[N], tt = 0, n;
+int main()
+{
+    cin >> n;
+    for (int i = 0; i < n; i++)
+    {
+        int x;
+        cin >> x;
+        while (tt && stk[tt] >= x)
+            tt--;
+        if (tt)
+            cout << stk[tt] << " ";
+        else
+            cout << -1 << " ";
+        stk[++tt] = x;
+    }
+    return 0;
+}
