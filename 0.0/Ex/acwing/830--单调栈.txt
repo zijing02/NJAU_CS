@@ -1,5 +1,5 @@
 // 单调栈
-// 找左边最近的小数
+// 找左边最近的小数（找规律）
 // 如果a[x]>=a[y]并且x<y则a[x]永远不会作为答案中的一员
 #include <bits/stdc++.h>
 using namespace std;
