@@ -11,7 +11,8 @@
 ### 结语
 &emsp;&emsp;祝你我学业有成，前程似锦。
 ### License
-&emsp;&emsp;近期检查项目，发现有部分个人信息，请诸位不要滥用，see the[LICENSE](LICENSE) file for details.
+&emsp;&emsp;近期检查项目，发现有部分个人信息，请诸位不要滥用，see the[LICENSE](LICENSE) file for details.<br>
+&emsp;&emsp;烦请诸位不要*fork*，因为fork的东西我无法实时更新，也请诸位帮鄙人做做宣传。
 ### 附目录结构
 [NJAU_CS](/)  
 [├──1.1](/1.1)&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;[├──1.2](/1.2)&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&ensp;[├──2.1](/2.1)&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;[├──2.2](/2.2)<br>
