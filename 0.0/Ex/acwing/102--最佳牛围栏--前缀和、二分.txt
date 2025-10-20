@@ -1,0 +1,78 @@
+// https://www.luogu.com/article/8na2kn4e
+// 前缀和、二分
+#include <bits/stdc++.h>
+using namespace std;
+const int MAXN = 100005;
+double a[MAXN], sum[MAXN];
+int N, F;
+bool check(double x)
+{
+    for (int i = 1; i <= N; i++)
+        // 存储给出的数列中的数字减去X的差，前缀和减去目前的X，然后判断当前位置的差是否小于0，小于0则返回false
+        sum[i] = a[i] - x + sum[i - 1];
+
+    double ans = INT_MIN, mins = INT_MAX;
+    for (int i = F; i <= N; i++)
+    {
+        // 使用前缀最小值的位置作为左端点
+        mins = min(sum[i - F], mins);
+
+        // 存储区间和
+        ans = max(ans, sum[i] - mins);
+    }
+    // 判断是否合法
+    return ans >= 0;
+}
+int main()
+{
+    cin >> N >> F;
+    for (int i = 1; i <= N; i++)
+    {
+        cin >> a[i];
+    }
+    double eps = 1e-6, l = 1, r = 2000;
+    while (r - l > eps)
+    {
+        double mid = (l + r) / 2;
+        if (check(mid))
+            l = mid;
+        else
+            r = mid;
+    }
+    cout << (int)(r * 1000) << endl;
+    return 0;
+}
+
+
+// tle，使用滑动窗口逐步枚举每一个区间
+#include <bits/stdc++.h>
+using namespace std;
+int num[100010];
+int main()
+{
+    int N, F;
+    double total = 0;
+    cin >> N >> F;
+    for (int i = 0; i < N; i++)
+    {
+        cin >> num[i];
+        if (i < F)
+            total += num[i];
+    }
+
+    for (int j = F; j < N; j++)
+    {
+        if (j > F)
+            for (int i = F; i < j; i++)
+                total += num[i];
+        int i = 0;
+        double sum = total;
+        while (j < N)
+        {
+            sum = sum - num[i++] + num[j++];
+            total = max(total, sum);
+        }
+    }
+    cout << (int)(total * 1.0 / F * 1000);
+    return 0;
+}

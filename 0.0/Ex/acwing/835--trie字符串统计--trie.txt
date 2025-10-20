@@ -1,0 +1,59 @@
+// trie树
+// 用于存储和快速查找字符串集合
+#include <bits/stdc++.h>
+using namespace std;
+
+const int N = 100010;
+
+// 下标时0的点，既是根节点，又是空节点
+int son[N][26], cnt[N], idx;
+char str[N];
+
+void insert(char str[])
+{
+    // p表示当前节点，u表示当前节点中存储的字母
+    int p = 0;
+    for (int i = 0; str[i]; i++)
+    {
+        // a~z --> 0~25
+        int u = str[i] - 'a';
+
+        // 当前节点不存在，创建一个节点
+        if (!son[p][u])
+            son[p][u] = ++idx;
+
+        p = son[p][u];
+    }
+
+    // 表示以该节点结尾的单词数量加1
+    cnt[p]++;
+}
+
+// 查询
+int query(char str[])
+{
+    int p = 0;
+    for (int i = 0; str[i]; i++)
+    {
+        int u = str[i] - 'a';
+        if (!son[p][u])
+            return 0;
+        p = son[p][u];
+    }
+    return cnt[p];
+}
+int main()
+{
+    int n;
+    cin >> n;
+    while (n--)
+    {
+        char op[2];
+        cin >> op >> str;
+        if (op[0] == 'I')
+            insert(str);
+        else
+            cout << query(str) << endl;
+    }
+    return 0;
+}

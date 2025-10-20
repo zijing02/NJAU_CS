@@ -1,0 +1,88 @@
+// 滑动窗口
+// 找逆序对，删除大（小）的 --> 单调性
+// 队列中存放下标而不是元素值，队列中的元素个数不一定等于窗口大小，可以小于窗口大小
+// 头尾都可以pop，只有尾部可以push
+// 以求最大值的单调队列为例，其进出队规则如下：
+// 该单调队列要求其中元素是从头到尾递减。遍历一个数组，所有元素依次入队
+// 在入队时，若该元素比队尾元素小，直接从队尾入队仍能保持单调性，那么从尾部直接入队即可
+// 若该元素比队尾元素大，那么要将队尾元素不停pop，直到队尾元素比该元素大（满足单调性），将该元素从队尾入队
+// 另外注意，当元素过期（已经不在滑动窗口内），将该元素在队首出队
+// 什么时候生成记录：每当形成一个窗口时就收集答案
+#include <bits/stdc++.h>
+using namespace std;
+const int N = 100010;
+int a[N], q[N];
+int n, k;
+int main()
+{
+    scanf("%d%d", &n, &k);
+    int hh = 0, tt = -1;
+    for (int i = 0; i < n; i++)
+        scanf("%d", &a[i]);
+    for (int i = 0; i < n; i++)
+    {
+        // 队头下标已经滑出窗口，队头出队
+        if (hh <= tt && q[hh] < i - k + 1)
+            hh++;
+
+        // 队尾元素的值大于等于当前元素，则队尾出队
+        while (hh <= tt && a[q[tt]] >= a[i])
+            tt--;
+        q[++tt] = i;
+        if (i >= k - 1)
+            printf("%d ", a[q[hh]]);
+    }
+    puts("");
+    hh = 0;
+    tt = -1;
+    for (int i = 0; i < n; i++)
+    {
+        if (hh <= tt && q[hh] < i - k + 1)
+            hh++;
+        while (hh <= tt && a[q[tt]] <= a[i])
+            tt--;
+        q[++tt] = i;
+        if (i >= k - 1)
+            printf("%d ", a[q[hh]]);
+    }
+    puts("");
+    return 0;
+}
+
+// 洛谷P1886
+#include <bits/stdc++.h>
+using namespace std;
+deque<int> q;
+int a[1000010] = {0};
+int main()
+{
+    int n, k;
+    cin >> n >> k;
+    for (int i = 1; i <= n; i++)
+        cin >> a[i];
+    for (int i = 1; i <= n; i++)
+    {
+        while (!q.empty() && q.front() <= i - k)
+            q.pop_front();
+        while (!q.empty() && a[q.back()] >= a[i])
+            q.pop_back();
+        q.push_back(i);
+        if (i < k)
+            continue;
+        cout << a[q.front()] << " ";
+    }
+    q.clear();
+    cout << "\n";
+    for (int i = 1; i <= n; i++)
+    {
+        while (!q.empty() && q.front() <= i - k)
+            q.pop_front();
+        while (!q.empty() && a[q.back()] <= a[i])
+            q.pop_back();
+        q.push_back(i);
+        if (i < k)
+            continue;
+        cout << a[q.front()] << " ";
+    }
+    return 0;
+}

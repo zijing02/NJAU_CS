@@ -1,0 +1,44 @@
+// 并查集
+// 1. 将两个集合合并
+// 2. 询问两个元素是否在一个集合当中
+// 基本原理：
+// 用树的形式维护集合，每一个集合的根节点编号是当前集合的编号，每一个节点中存储自己的父节点，直到找到根节点
+// q1: 判断根节点 if(p[x] == x)
+// q2: 求x的集合编号 while(p[x] != x) x = p[x];
+// q3: 合并两个集合 p[x] = y
+// 优化q2，路径压缩: 求根节点时，将途中所有的节点的父节点指向根节点
+#include <bits/stdc++.h>
+using namespace std;
+const int N = 1e5 + 10;
+int p[N];
+// 初始化根节点
+void init(int n)
+{
+    for (int i = 1; i <= n; i++)
+        p[i] = i;
+}
+
+// 返回x的祖宗节点，并进行路径压缩
+int find(int x)
+{
+    if (p[x] != x)
+        p[x] = find(p[x]);
+    return p[x];
+}
+int main()
+{
+    int n, m;
+    cin >> n >> m;
+    init(n);
+    while (m--)
+    {
+        char op[2];
+        int a, b;
+        cin >> a >> b;
+        if (op[0] == 'M')
+            p[find(a)] = find(b);
+        else if (op[0] == 'Q')
+            cout << (find(a) == find(b) ? "Yes" : "No") << endl;
+    }
+    return 0;
+}

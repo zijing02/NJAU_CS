@@ -1,0 +1,41 @@
+// KMP算法，用于判断一个字符串是否是另一个字符串的子串
+// 找出字串中的重复子串，p[1~j] = p[i-j+1~i]
+// 最小移动距离和最长重复子串的长度相关
+// 前缀 = 后缀 = 长串中后缀
+#include <bits/stdc++.h>
+using namespace std;
+const int N = 100010, M = 1000010;
+int n, m;
+char p[N], s[M];
+int ne[N];
+int main()
+{
+    cin >> n >> p + 1 >> m >> s + 1;
+
+    // 求ne[j]
+    // 从2开始，j=0时，ne[j] = 0
+    for (int i = 2, j = 0; i <= n; i++)
+    {
+        while (j && p[i] != p[j + 1])
+            j = ne[j];
+        if (p[i] == p[j + 1])
+            j++;
+        ne[i] = j;
+    }
+
+    // 匹配过程
+    for (int i = 1, j = 0; i <= m; i++)
+    {
+        while (j && s[i] != p[j + 1])
+            j = ne[j];
+        if (s[i] == p[j + 1])
+            j++;
+        if (j == n)
+        {
+            // 匹配成功
+            cout << i - n << " ";
+            j = ne[j];
+        }
+    }
+    return 0;
+}

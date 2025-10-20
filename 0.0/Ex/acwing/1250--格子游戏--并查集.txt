@@ -1,0 +1,40 @@
+// 虽然坐标是两个数字，但是可以用(a-1)*n+b转换为一个数字
+#include <bits/stdc++.h>
+using namespace std;
+const int N = 1e5 + 10;
+int p[N];
+int find(int x)
+{
+    if (p[x] != x)
+        p[x] = find(p[x]);
+    return p[x];
+}
+int main()
+{
+    int n, m;
+    cin >> n >> m;
+    // 初始化n*n的矩阵
+    for (int i = 1; i <= n * n; i++)
+        p[i] = i;
+    for (int i = 1; i <= m; i++)
+    {
+        int a, b;
+        char op;
+        cin >> a >> b >> op;
+        int pos1 = (a - 1) * n + b, pos2 = (op == 'D' ? pos1 + n : pos1 + 1);
+
+        // 判断已经封闭，两端点在一个集合中
+        if (find(pos1) == find(pos2))
+        {
+            cout << i;
+            break;
+        }
+        // 最终没有封闭
+        if (i == m && find(pos2) != find(pos1))
+            cout << "draw";
+
+        // 已经连接起来的边
+        p[find(pos2)] = find(pos1);
+    }
+    return 0;
+}
