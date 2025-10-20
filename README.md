@@ -1,5 +1,5 @@
-# &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;致读者
-## &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;人工智能学院 计算机科学与技术
+# 致读者
+## 人工智能学院 计算机科学与技术 zijing
 ### 引入
 &emsp;&emsp;本人是&ensp;*2019*&ensp;版培养方案的最后一届，&ensp;*2023*&ensp;版培养方案及以后的学弟（妹）慎重借鉴。此外，本仓库为学长无偿付出，诸位无需支付任何费用，且以后若看到任何带有&ensp;*dzj*、*zijing*、*dongzijing*&ensp;的资料均可以来此下载，如符合心意可向好友推荐此仓库，动动小手点点&ensp;*star*&ensp;让更多的人发现。<br>
 ### 代码/图片引用
@@ -11,7 +11,8 @@
 ### 结语
 &emsp;&emsp;祝你我学业有成，前程似锦。
 ### License
-&emsp;&emsp;近期检查项目，发现有部分个人信息，请诸位不要滥用，see the[LICENSE](LICENSE) file for details.
+&emsp;&emsp;近期检查项目，发现有部分个人信息，请诸位不要滥用，see the[LICENSE](LICENSE) file for details.<br>
+&emsp;&emsp;烦请诸位不要*fork*，因为fork的东西我无法实时更新，也请诸位帮鄙人做做宣传。
 ### 附目录结构
 [NJAU_CS](/)  
 [├──1.1](/1.1)&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;[├──1.2](/1.2)&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&ensp;[├──2.1](/2.1)&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;[├──2.2](/2.2)<br>
