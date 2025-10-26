@@ -1,0 +1,5 @@
+bootstrap项目登录名密码：
+sysadmin
+123456
+地址
+http://localhost:8080/login.jsp
