@@ -1,0 +1,58 @@
+#include <bits/stdc++.h>
+using namespace std;
+const int N = 1e5 + 10;
+int p[N], num[N];
+void init(int n)
+{
+    for (int i = 1; i <= n; i++)
+    {
+        p[i] = i;
+        num[i] = 1;
+    }
+}
+int find(int x)
+{
+    if (p[x] != x)
+        p[x] = find(p[x]);
+    return p[x];
+}
+
+int main()
+{
+    int n, m;
+    cin >> n >> m;
+    init(n);
+    while (m--)
+    {
+        char op;
+        int a, b;
+        cin >> op;
+        if (op == 'C')
+        {
+            cin >> a >> b;
+            // problem：不能重复合并，会导致数量错误
+            if (find(a) != find(b))
+            {
+                // problem：需要先合并数量，再合并父节点
+                num[find(b)] += num[find(a)];
+                p[find(a)] = find(b);
+            }
+        }
+        else if (op == 'Q')
+        {
+            char sub_op;
+            cin >> sub_op;
+            if (sub_op == '1')
+            {
+                cin >> a >> b;
+                cout << ((find(a) == find(b)) ? "Yes" : "No") << endl;
+            }
+            else if (sub_op == '2')
+            {
+                cin >> a;
+                cout << num[find(a)] << endl;
+            }
+        }
+    }
+    return 0;
+}
