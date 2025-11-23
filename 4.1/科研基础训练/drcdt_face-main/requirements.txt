@@ -1,0 +1,10 @@
+# This file may be used to create an environment using:
+# $ conda create --name <env> --file <this file>
+# platform: linux-64
+_libgcc_mutex=0.1=main
+einops=0.3.0=pypi_0
+scikit-image=0.16.2=pypi_0
+scikit-learn=0.21.3=py37hd81dba3_0
+matplotlib=3.1.2=pypi_0
+torch=1.8.0=pypi_0
+numpy=1.21.2=pypi_0

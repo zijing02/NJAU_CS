@@ -1,0 +1,1 @@
+Please put the three model files (clip_g.safetensors, clip_l.safetensors, and d3_medium.safetensors) here.
