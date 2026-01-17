@@ -1,0 +1,37 @@
+// 分析见acwing 831 KMP
+#include <bits/stdc++.h>
+using namespace std;
+const int N = 1000005, M = 1000005;
+int n, m, ne[N];
+char p[N], s[N];
+int main()
+{
+    cin >> s + 1 >> p + 1;
+    m = strlen(s + 1);
+    n = strlen(p + 1);
+    for (int i = 2, j = 0; i <= n; i++)
+    {
+        while (j && p[i] != p[j + 1])
+            j = ne[j];
+        if (p[i] == p[j + 1])
+            j++;
+        ne[i] = j;
+    }
+
+    for (int i = 1, j = 0; i <= m; i++)
+    {
+        while (j && s[i] != p[j + 1])
+            j = ne[j];
+        if (s[i] == p[j + 1])
+            j++;
+        if (j == n)
+        {
+            cout << i - n + 1 << endl;
+            j = ne[j];
+        }
+    }
+    // border中存放的就是前缀的长度，也就是所需要输出的信息
+    for (int i = 1; i <= n; i++)
+       cout<< ne[i] << " ";
+    return 0;
+}

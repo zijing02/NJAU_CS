@@ -1,0 +1,31 @@
+#include <bits/stdc++.h>
+using namespace std;
+// 题目中内存限制，只能开一个数组
+int a[5005][5005];
+int n, m, x, y, v, cmax = 0;
+long long val, maxVal;
+int main()
+{
+    cin >> n >> m;
+    // 题目中的R可能特别大，如果特别大就没有意思，所以限制一下
+    m = min(5005, m);
+    for (int i = 0; i < n; i++)
+    {
+        // x,y有0值但常规前缀从1开始，所以加1
+        cin >> x >> y >> v;
+        a[++x][++y] += v;
+        cmax = max(max(x, y), cmax);
+    }
+    for (int i = 1; i <= cmax; i++)
+    {
+        for (int j = 1; j <= cmax; j++)
+        {
+            // 从当前的点向前画正方形，可能会超出边界，所以用1去限制
+            int x1 = max(1, i - m + 1), y1 = max(1, j - m + 1);
+            a[i][j] = a[i - 1][j] + a[i][j - 1] - a[i - 1][j - 1] + a[i][j];
+            maxVal = max(maxVal, (long long)(a[i][j] - a[x1 - 1][j] - a[i][y1 - 1] + a[x1 - 1][y1 - 1]));
+        }
+    }
+    cout << maxVal;
+    return 0;
+}

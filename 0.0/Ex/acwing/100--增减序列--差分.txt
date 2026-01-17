@@ -1,0 +1,28 @@
+#include <bits/stdc++.h>
+using namespace std;
+// 差分：利用b[l]+=1,b[r+1]-=1实现区间加法
+// 本题中区间为1，仅仅对某一个数字进行处理，故可以利用加减相消来实现差值正负的统一
+// 差值消除后剩下的pos或者neg就是剩余需要操作的次数
+// 最终值的个数就是由该次数加上1得到
+// 加1是因为b[1]在一开始抵消阶段不参与计算，后续修改才参与
+int main()
+{
+    int a[100005], b[100005], n;
+    long long pos = 0, neg = 0;
+    cin >> n;
+    for (int i = 1; i <= n; i++)
+    {
+        cin >> a[i];
+        b[i] = a[i] - a[i - 1];
+    }
+    for (int i = 2; i <= n; i++)
+    {
+        if (b[i] > 0)
+            pos += b[i];
+        else
+            neg -= b[i];
+    }
+    cout << max(pos, neg) << endl
+         << abs(pos - neg) + 1;
+    return 0;
+}

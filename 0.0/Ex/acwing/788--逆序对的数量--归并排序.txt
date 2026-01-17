@@ -18,7 +18,7 @@ void mergeSort(int *a, int l, int r)
         if (a[i] <= a[j])
             tmp[k++] = a[i++];
         else
-        { // 逆序，则从此处到终点全部逆序
+        { // 因为左半部分已经有序，所以从此处到中点全部逆序
             res += mid - i + 1;
             tmp[k++] = a[j++];
         }

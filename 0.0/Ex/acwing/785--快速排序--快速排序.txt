@@ -1,3 +1,4 @@
+// 1
 #include <iostream>
 using namespace std;
 // 快速排序--分治
@@ -38,5 +39,45 @@ int main()
         cout << a[i] << " ";
     }
 
+    return 0;
+}
+
+
+// 2
+#include <bits/stdc++.h>
+using namespace std;
+void quick_sort(int *a, int l, int r)
+{
+    if (l >= r)
+        return;
+    // 此处需要选定i，j作为新的下标来使用，否则改变了l，r
+    int pos_value = a[(l + r) / 2], i = l, j = r;
+    while (i < j)
+    {
+        while (a[i] < pos_value)
+            i++;
+        while (a[j] > pos_value)
+            j--;
+        if (i <= j)
+            swap(a[i++], a[j--]);
+    }
+    // 划分使用i，j而不是（l+r）/2
+    // 同时注意，此处左右边界为j，i
+    quick_sort(a, l, j);
+    quick_sort(a, i, r);
+}
+int main()
+{
+    int a[10] = {8, 7, 2, 3, 4, 5, 6, 6, 9, 0}, n = 10;
+    // cin >> n;
+    // for (int i = 0; i < n; i++)
+    // {
+    //     cin >> a[i];
+    // }
+    quick_sort(a, 0, n - 1);
+    for (int i = 0; i < n; i++)
+    {
+        cout << a[i] << " ";
+    }
     return 0;
 }

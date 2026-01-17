@@ -73,3 +73,71 @@ int main()
     }
     return 0;
 }
+
+// stl偷鸡（繁琐版）
+#include <bits/stdc++.h>
+using namespace std;
+int a[100005], n, m, x, c, l, r;
+map<int, pair<int, int>> mp;
+bool cmp(const pair<int, pair<int, int>> &a, const pair<int, pair<int, int>> &b)
+{
+    return a.first < b.first;
+}
+int main()
+{
+    cin >> n >> m;
+    for (int i = 0; i < n; i++)
+    {
+        cin >> x >> c;
+        mp[x].first = i;
+        mp[x].second += c;
+    }
+    vector < pair<int, pair<int, int>>> vec(mp.begin(), mp.end());
+    sort(vec.begin(), vec.end(), cmp);
+    for (int i = 0; i < vec.size(); i++)
+    {
+        vec[i].second.first = i;
+    }
+    for (int i = 1; i <= vec.size(); i++)
+        a[i] = a[i - 1] + vec[i - 1].second.second;
+    while (m--)
+    {
+        cin >> l >> r;
+        cout <<  a[upper_bound(vec.begin(), vec.end(), make_pair(r, make_pair(-1, -1)), cmp) - vec.begin()] -a[lower_bound(vec.begin(), vec.end(), make_pair(l, make_pair(-1, -1)), cmp) - vec.begin()] << endl;
+    }
+    return 0;
+}
+
+
+// stl偷鸡（简化版）
+#include <bits/stdc++.h>
+using namespace std;
+int a[100005], n, m, x, c, l, r;
+vector<pair<int, pair<int, int>>> vec;
+bool cmp(const pair<int, pair<int, int>> &a, const pair<int, pair<int, int>> &b)
+{
+    return a.second.first < b.second.first;
+}
+int main()
+{
+    cin >> n >> m;
+    for (int i = 0; i < n; i++)
+    {
+        cin >> x >> c;
+        vec.push_back({i, {x, c}});
+    }
+    sort(vec.begin(), vec.end(), cmp);
+    for (int i = 0; i < vec.size(); i++)
+    {
+        vec[i].first = i;
+    }
+    for (int i = 1; i <= vec.size(); i++)
+        a[i] = a[i - 1] + vec[i - 1].second.second;
+    while (m--)
+    {
+        cin >> l >> r;
+        cout << a[upper_bound(vec.begin(), vec.end(), make_pair(-1, make_pair(r, -1)), cmp) - vec.begin()] - a[lower_bound(vec.begin(), vec.end(), make_pair(-1, make_pair(l, -1)), cmp) - vec.begin()] << endl;
+    }
+    return 0;
+}
+

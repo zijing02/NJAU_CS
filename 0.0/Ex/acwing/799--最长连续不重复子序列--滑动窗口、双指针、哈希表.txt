@@ -8,6 +8,10 @@ using namespace std;
 // while(j < n && check(i, j)) j++;
 // res = ...;
 // i = j;修改i指针位置}
+
+// 此题中i为“快指针”在前面标记，j为“慢指针”，在后边去重
+// 当i首次遇到重复时，j从数组开头遍历，遍历到有重复的地方，记录结果，同时i继续向前移动
+// i再次遇到重复，j从记录的位置继续遍历知道没有重复
 int main()
 {
     int n, a[100005], s[100005] = {0}, res = 0;
@@ -25,5 +29,37 @@ int main()
         res = max(res, i - j + 1);
     }
     cout << res;
-    return;
+    return 0;
+}
+
+#include <bits/stdc++.h>
+using namespace std;
+int n, m = 0, tmp = 0;
+map<int, int> mp;
+int a[100005];
+int main()
+{
+    cin >> n;
+    for (int i = 0; i < n; i++)
+        cin >> a[i];
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = i; j < n; j++)
+        {
+            if (!mp[a[j]])
+            {
+                mp[a[j]]++;
+                tmp++;
+                m = max(m, tmp);
+            }
+            else
+            {
+                mp.clear();
+                tmp = 0;
+                break;
+            }
+        }
+    }
+    cout << m;
+    return 0;
 }

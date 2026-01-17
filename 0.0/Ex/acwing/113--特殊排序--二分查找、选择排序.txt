@@ -1,0 +1,47 @@
+#include <bits/stdc++.h>
+using namespace std;
+class Solution
+{
+public:
+    bool compare(int a, int b)
+    {
+        return a < b;
+    }
+    vector<int> specialSort(int N)
+    {
+        vector<int> ans;
+        for (int i = 0; i < N; i++)
+        {
+            // 基本插入排序
+            // int pos = 0;
+            // for (int j = 0; j < ans.size(); j++)
+            // {
+            //     if (compare(ans[j], i))
+            //     {
+            //         pos = j + 1;
+            //     }
+            //     else
+            //     {
+            //         pos = j;
+            //         break;
+            //     }
+            // }
+            if (ans.empty())
+            {
+                ans.push_back(i);
+                continue;
+            }
+            int l = 0, r = ans.size(), mid;
+            while (l < r)
+            {
+                mid = (l + r) / 2;
+                if (compare(ans[mid], i))
+                    l = mid + 1;
+                else
+                    r = mid;
+            }
+            ans.insert(ans.begin() + l, i);
+        }
+        return ans;
+    }
+};

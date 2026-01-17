@@ -1,0 +1,28 @@
+// 配置PATH后可以直接使用指令不需要使用路径
+// 查看视频信息
+D:\ffmpeg\bin\ffprobe.exe 1.mp4
+D:\ffmpeg\bin\ffprobe.exe 1-1.avi
+
+// 转换视频
+// 没有声音
+D:\ffmpeg\bin\ffmpeg.exe -i 1.mp4 `
+>>   -c:v libx264 `
+>>   -profile:v baseline `
+>>   -level 3.0 `
+>>   -pix_fmt yuv420p `
+>>   -r 25 `
+>>   -an `
+>>   1.avi
+
+// 最终使用指令
+D:\ffmpeg\bin\ffmpeg.exe -y -i 1.mp4 `
+>>   -vf "scale=in_range=full:out_range=tv" `
+>>   -c:v libx264 `
+>>   -profile:v baseline `
+>>   -level 3.0 `
+>>   -pix_fmt yuv420p `
+>>   -r 25 `
+>>   -c:a aac `
+>>   -ar 32000 `
+>>   -ac 1 `
+>>   1_with_audio.avi
