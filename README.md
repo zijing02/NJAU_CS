@@ -26,7 +26,7 @@
 ### License
 
 &emsp;&emsp;近期检查项目，发现有部分个人信息，请诸位不要滥用，see the[LICENSE](LICENSE) file for details.<br>
-&emsp;&emsp;烦请诸位不要&ensp;*fork*&ensp;，也请诸位帮我Markdown: Open Preview做做宣传。
+&emsp;&emsp;烦请诸位不要&ensp;*fork*&ensp;，也请诸位帮我做做宣传。
 
 ### 附目录结构
 
